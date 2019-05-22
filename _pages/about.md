@@ -5,4 +5,5 @@ image: 08.jpg
 permalink: /about/
 ---
 
-This page is created to share red team/pentesting kowledge in an understandable way. In most of the posts there will be guid for vulnhub machines or other ways so you can try what you learned.
+This page is created to share Red Team/Penetration knowledge in an understandable way. We will be including a link for Vulnhub or Hackthebox etc to try out what you've learnt.
+
