@@ -17,7 +17,16 @@ First, lets just sum up the basic commands:
 | Clear screen         | cls   | clear  | Clear-Host    |
 | Display File Content | cat   | type   | Get-Content   |
 
-So that is about the basic. Let's look at Linux a little bit for now. How Linux works is that if you write a command, then it will go and try to find a file with the same name. It checks the Path variable folder by folder and execute the first file with the same name. So instead of cat we can write /bin/cat.
+LINUX
+Usefull commands
+
+| Result                   | Command        |
+|--------------------------|----------------|
+| Add user without home    | useradd -M bob |
+| Add password to the user | passwd bob     |
+
+
+So that is about the basic. How Linux works is that if you write a command, then it will go and try to find a file with the same name. It checks the Path variable folder by folder and execute the first file with the same name. So instead of cat we can write /bin/cat.
 
 ![Full Path Cat](/img/full-path-cat.png)
 
