@@ -5,5 +5,5 @@ image: 08.jpg
 permalink: /about/
 ---
 
-This page is created to share Red Team/Penetration knowledge in an understandable way. We will be including a link for Vulnhub or Hackthebox etc to try out what you've learnt.
+We're a bunch of security enthusiasts who're very passionate about hacking. Red Team Zone is created for sharing our Red Team/Penetration knowledge in an understandable way. We try to write about our day-to-day hacks as much as we can. 
 
