@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "RF 433"
+date:   2018-05-29 18:05:55 +0300
+image:  433MhzRemote.png
+tags:   [Hardware]
+---
+<h1>Hacking a cheap remote control</h1>
+<h2>Story and the WHY?</h2>
+
+One day I thought that it would be good idea to order a cheap chinese remote controlled  light switch. I liked it so much, It made my life easier. I could just turn off and on the lights. No more walking to the bad in the dark! It has this nice little remote control. I should have go for the wifi one. It looks so nice I do not want to throw it out. So I grabbed my arduino, sensors wifi module and made a little gadget that allowed me to control my light with wifi. 
+
+A few month later I went to the dentist. door was remote controlled. Than I saw the same little remote control. Must be a special case I tough. Then I went for a job interview. The remote control was there. Again. Just like when you buy a new car and suddenly you start to see it everywhere. But one month before you could not find a single one on the street. I know now, these are everywhere. Need to make a device to hack them. 
+
+<h2>Back to the basics</h2>
+I will try to explain everything the easiest way. So what do we need to hack a device like this? First we need an Arduino. For the preparing part it is better to use an Arduino Uno or Mega.
