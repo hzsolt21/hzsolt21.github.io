@@ -19,7 +19,7 @@ From there my objective was clear. Grab the code, and try to replay it. Simple, 
 
 
 <h2>Back to the basics</h2>
-I will try to explain everything the easiest way. So what do we need to hack a device like this? First we need an Arduino. For the preparing part it is better to use an Arduino Uno or Mega.
+I will try to explain everything the easiest way. So what do we need to hack a device like this? First we need an Arduino. For the preparing part it is better to use an Arduino Uno or Mega. It is easy to change the wires, no need to solder them.
 
 
 -- insert a picture of mega --
@@ -27,3 +27,13 @@ I will try to explain everything the easiest way. So what do we need to hack a d
 
 Then we will need a breadboard and some wires.
 -- breadboard and some wires -- 
+
+We should not forget about the 433Mhz RF Decoder Transmitter/Receiver.
+
+--pic of receiver--
+The receiver and the transmitter are separate module. That will come handy later.
+Now we need to instal Arduino IDE you can find a step by step guide here:
+https://www.arduino.cc/en/Guide/Windows
+
+https://www.arduino.cc/en/Guide/linux
+
