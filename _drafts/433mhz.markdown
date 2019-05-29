@@ -12,5 +12,18 @@ One day I thought that it would be good idea to order a cheap chinese remote con
 
 A few month later I went to the dentist. door was remote controlled. Than I saw the same little remote control. Must be a special case I tough. Then I went for a job interview. The remote control was there. Again. Just like when you buy a new car and suddenly you start to see it everywhere. But one month before you could not find a single one on the street. I know now, these are everywhere. Need to make a device to hack them. 
 
+<h2>Main Idea</h2>
+Sometimes the easiest way can work really well. If we want to control something and we do not have the remote control, we can just try to figure out how it works. In this case, a quick googling told me that this is a remote control working on the frequency of 433 Mhz. That is not enough. So I opened the device. I saw a EV1527 chip there. Quick google and I found out that it has a few code pre-programmed inside. No changing code, no encryption, nothing.
+-- picture of inside--
+From there my objective was clear. Grab the code, and try to replay it. Simple, easy, it should work. That is the basic idea for most of the cheap remote controls.
+
+
 <h2>Back to the basics</h2>
 I will try to explain everything the easiest way. So what do we need to hack a device like this? First we need an Arduino. For the preparing part it is better to use an Arduino Uno or Mega.
+
+
+-- insert a picture of mega --
+
+
+Then we will need a breadboard and some wires.
+-- breadboard and some wires -- 
