@@ -45,7 +45,7 @@ All you need to do, is to unzip this to the library folder in your installation 
 
 --picture of the arangement.
 
-So everything is set up. We need to connect the arduino to the module and the arduino to the pc.  
+So everything is set up. We need to connect the arduino to the module and the arduino to the pc.  The bigger one is the receiver with 4 pins. GND -> GND VCC → 5v  The Data pin closer to the GND will go to the arduino pin 2. Above the TX.
 --portnamings and the setup picture
 
 The next step is to get the program to the arduino. It is really easy, thanks to our library. Just go to File > Examples >rc-switch and click on REceiveDemo_Simple. The project is loaded
@@ -61,7 +61,7 @@ The next step is to get the program to the arduino. It is really easy, thanks to
 RCSwitch mySwitch = RCSwitch(); 
 
 void setup() {
-  Serial.begin(9600); //Begin serial port communication with the rate of 9600. Important for watching the incoming data on the computer
+  Serial.begin(9600); //Begin serial port communication with the baud rate of 9600. Important for watching the incoming data on the computer
   mySwitch.enableReceive(0);  // Receiver on interrupt 0 => that is pin #2
 }
 
@@ -81,4 +81,8 @@ void loop() { //need an infinite loop so the Arduino keeps running
 }
 --code
 
+Now you need to check if everything is correct to upload the code to arduino. Go to Tools. It should look like the picture. COM port number does not matter. It is probably automatically set up by the IDE. Click on upload. After it is done, click on the magnifying glass icon. That is the serial monitor. That is where you can communicate with the arduino. Down in a dropdown box you will see the baud rate. Remember that we set a baud rate 9600 in the code? You should select 9600 just like there. All set up, now if you use the remote control it will detect the signal. You should see something like this when a signal is detected.
 
+-- picture of signal
+
+Remember 1 detection is not always 100% so try it a few more times. Now that we have the code ( for me it is 15588040) we can try to re-play it and see if anything changes.
