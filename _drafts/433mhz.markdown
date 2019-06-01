@@ -37,6 +37,8 @@ https://www.arduino.cc/en/Guide/Windows
 
 https://www.arduino.cc/en/Guide/linux
 
+<h2>Sniffing</h2>
+
 So we have the IDE. Perfect. Now we  need the library for the module 433mhz. You can download it here: 
 
 https://github.com/sui77/rc-switch/
@@ -85,4 +87,34 @@ Now you need to check if everything is correct to upload the code to arduino. Go
 
 -- picture of signal
 
-Remember 1 detection is not always 100% so try it a few more times. Now that we have the code ( for me it is 15588040) we can try to re-play it and see if anything changes.
+Remember 1 detection is not always 100% so try it a few more times. Now that we have the code ( for me it is 15588040) we can try to re-play it and see if anything changes. 
+
+<h2>Replay</h2>
+This will be almost the same. Grab the transmitter and wire it up: VCC -> 5v GND -> GND Data ->pin 10
+
+--picture
+
+Now the code, go to File > Examples >rc-switch and select send demo. Here we need a little bit of editing. I deleted everything in the loop except the send decimal line and a wait. here is my code:
+
+--code
+#include <RCSwitch.h>
+
+RCSwitch mySwitch = RCSwitch();
+
+void setup() {
+
+  Serial.begin(9600);
+  // Transmitter is connected to Arduino Pin #10  
+  mySwitch.enableTransmit(10);
+}
+
+void loop() {
+  mySwitch.send(15588040, 24);
+  delay(1000);  
+}
+--code
+Save and upload the same way as the receiver (change the number 15588040 to the number you sniffed). Now you should see the thing the controller should control change state every second. For me it is the lights.
+
+<h2>What's next?</h2> 
+
+This was an introduction of how to sniff these basic codes and replay the data. It is already capable to open some doors. Either way, we will update this project in the future and make it more useful.
