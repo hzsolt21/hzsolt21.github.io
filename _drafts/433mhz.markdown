@@ -37,3 +37,48 @@ https://www.arduino.cc/en/Guide/Windows
 
 https://www.arduino.cc/en/Guide/linux
 
+So we have the IDE. Perfect. Now we  need the library for the module 433mhz. You can download it here: 
+
+https://github.com/sui77/rc-switch/
+
+All you need to do, is to unzip this to the library folder in your installation directory.
+
+--picture of the arangement.
+
+So everything is set up. We need to connect the arduino to the module and the arduino to the pc.  
+--portnamings and the setup picture
+
+The next step is to get the program to the arduino. It is really easy, thanks to our library. Just go to File > Examples >rc-switch and click on REceiveDemo_Simple. The project is loaded
+--code
+/*
+  Simple example for receiving
+ 
+  https://github.com/sui77/rc-switch/
+*/
+
+#include <RCSwitch.h>
+
+RCSwitch mySwitch = RCSwitch(); 
+
+void setup() {
+  Serial.begin(9600); //Begin serial port communication with the rate of 9600. Important for watching the incoming data on the computer
+  mySwitch.enableReceive(0);  // Receiver on interrupt 0 => that is pin #2
+}
+
+void loop() { //need an infinite loop so the Arduino keeps running
+  if (mySwitch.available()) { //only start to write when there is data available
+    
+    Serial.print("Received ");  
+    Serial.print( mySwitch.getReceivedValue() ); 
+    Serial.print(" / ");
+    Serial.print( mySwitch.getReceivedBitlength() );
+    Serial.print("bit ");
+    Serial.print("Protocol: ");
+    Serial.println( mySwitch.getReceivedProtocol() );
+
+    mySwitch.resetAvailable();
+  }
+}
+--code
+
+
