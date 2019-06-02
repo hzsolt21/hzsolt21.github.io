@@ -26,15 +26,16 @@ I will try to explain everything the easiest way. So what do we need to hack a d
 
 The receiver and the transmitter are separate module. That will come in handy later.
 Now we need to instal Arduino IDE you can find a step by step guide here:
-https://www.arduino.cc/en/Guide/Windows
 
-https://www.arduino.cc/en/Guide/linux
+[Install on Windows](https://www.arduino.cc/en/Guide/Windows)
+
+[Install on Linux](https://www.arduino.cc/en/Guide/linux)
 
 <h2>Sniffing</h2>
 
 So we have the IDE. Perfect. Now we  need the library for the module 433mhz. You can download it here: 
 
-https://github.com/sui77/rc-switch/
+[Repo](https://github.com/sui77/rc-switch/)
 
 All you need to do, is to unzip this to the library folder in your installation directory.
 So everything is set up. We need to connect the arduino to the module and the arduino to the pc.  The bigger one is the receiver with 4 pins. GND -> GND VCC → 5v  The Data pin closer to the GND will go to the arduino pin 2. Above the TX.
@@ -46,7 +47,7 @@ The next step is to get the program to the arduino. It is really easy, thanks to
  
   https://github.com/sui77/rc-switch/
 */
-
+```
 #include <RCSwitch.h>
 
 RCSwitch mySwitch = RCSwitch(); 
@@ -70,6 +71,7 @@ void loop() { //need an infinite loop so the Arduino keeps running
     mySwitch.resetAvailable();
   }
 }
+```
 
 Now you need to check if everything is correct to upload the code to arduino. Go to Tools. It should look like the picture. COM port number does not matter. It is probably automatically set up by the IDE. Click on upload. After it is done, click on the magnifying glass icon. That is the serial monitor. That is where you can communicate with the arduino. Down in a dropdown box you will see the baud rate. Remember that we set a baud rate 9600 in the code? You should select 9600 just like there. All set up, now if you use the remote control it will detect the signal. You should see something like this when a signal is detected.
 
@@ -83,7 +85,7 @@ This will be almost the same. Grab the transmitter and wire it up: VCC -> 5v GND
 ![Transmitter setup](/img/433Replay/transmitter.jpg)
 
 Now the code, go to File > Examples >rc-switch and select send demo. Here we need a little bit of editing. I deleted everything in the loop except the send decimal line and a wait. here is my code:
-
+```
 #include <RCSwitch.h>
 
 RCSwitch mySwitch = RCSwitch();
@@ -99,6 +101,7 @@ void loop() {
   mySwitch.send(15588040, 24);
   delay(1000);  
 }
+```
 Save and upload the same way as the receiver (change the number 15588040 to the number you sniffed). Now you should see the thing the controller should control change state every second. For me it is the lights.
 
 <h2>What's next?</h2> 
