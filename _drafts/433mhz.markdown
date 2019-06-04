@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "Wire\"LESS\" Security"
-date:   2018-05-29 18:05:55 +0300
+title:  "Wire\"LESS\" Security - 1"
+date:   2019-06-04 21:09:55 +0100
 image:  433MhzRemote.png
 tags:   [Hardware]
 ---
-<h1>WireLESS Security - 1: How I hacked a cheap remote control using an arduino </h1>
+<link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
+<h1 style="font-family:Verdana">How I hacked a cheap remote control using an arduino </h1>
 
 <h2>Prologue:</h2>
 One fine day I thought that it would be a good idea to order a cheap chinese remote controlled  light switch. I liked it so much, it made my life easier. I could just turn off and turn on the lights. No more walking to the bed in the dark! It has this nice little remote control. I should have gone for the wifi one. It looks so nice I do not want to throw it out. So I grabbed my arduino, sensors, wifi module and made a little gadget that allowed me to control my light with wifi. 
