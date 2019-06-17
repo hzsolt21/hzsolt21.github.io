@@ -61,3 +61,11 @@ A vigilant user should be able to detect malicious payloads sent by attackers. F
 * Use email sandbox technologies
 * Use Application Filtering Firewall.
 
+<h3> 4 - Exploitation: </h3>
+<b> Attack </b> - During the exploitation phase, the APT's malware code is executed on the target network through remote or local mechanisms, taking advantage of discovered vulnerabilities to gain superuser access to the targeted organizational information system. Attacker's in this phase try to escalate privileges from a normal user to a higher privileges such as Administrator, Root User etc. Attackers usually use sophisticated techniques or sometimes 0day's to gain access to privilged accounts. 
+
+<b> Defense </b> - Defender's should always keep the systems updated by applying vendor's security patches wherever applicable. This can hinder an attacker's exploitation attack. 
+* Use EDR solutions to detect and stop 
+* Implement "chroot" jail on the hosts facing internet
+* Use anti exploitation techniques such as EMET, DEP etc.
+* Keep the systems and applications upto date with all patches 
