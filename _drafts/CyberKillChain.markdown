@@ -39,12 +39,14 @@ So it basically means the attack may involve one or more of the following techni
 * Implement Firewall ACL (Access Control Lists) rules for incoming traffic
 * Implmenet Web Analytics to analyze the traffic (Eg: Google Analytics)
 
+
 <h3> 2 - Weaponization: </h3>
 <b>Attack</b> - The attacker uses the gathered information about the target to develop exploits or malicious payloads to send the victim. All the information gathered from the previous phase including the software / hardware in use related information will be analyzed and few of the following things can be done by the attacker:
 * Make a Document with a malicious Macro
 * Design a phishing mail 
 * Make a malicious PDF file
 * Prepare USB drives for a driveby attack etc.
+
 
 <b> Defense </b>- In defense perspective there is nothing a defender could do as this is not an active phase. The attacker doesn't directly interact with the target during this phase. Implementing proper defenses to prevent reconnaissance can stop attacker from being successful in this phase.
 
@@ -54,6 +56,8 @@ So it basically means the attack may involve one or more of the following techni
 * Email with Malicious Document
 * Email with Malicious PDF files
 * Drop few infected USB drives in a public place etc.
+
+
 <b> Defense </b> - There are multiple ways to stop this delivery by attackers. First and foremost important thing is to make the employees aware of the cyber attacks.
 A vigilant user should be able to detect malicious payloads sent by attackers. Few of the defenses for this phase are:
 * Implement proxy filter to deny outgoing traffic
@@ -69,3 +73,7 @@ A vigilant user should be able to detect malicious payloads sent by attackers. F
 * Implement "chroot" jail on the hosts facing internet
 * Use anti exploitation techniques such as EMET, DEP etc.
 * Keep the systems and applications upto date with all patches 
+
+
+<h2> Prologue </h2> 
+In this blog post we discovered what a kill chain is and what are the phases of the kill chain. We explored a bit about first 4 phases of the cyber kill chain. The recon, weaponization, delivery and exploitation phases of the kill chain. We also learnt few defenses for the respective phases. In part 2 of this series let us explore more about the next 3 interesting phases of the kill chain. 
