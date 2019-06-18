@@ -15,11 +15,9 @@ So basic yet works so great. But, don’t do it mindlessly.
 <h2>Routers</h2>
 People usually does not change the passwords of there routers. We can easily find list of default user passwords for routers in the links below.
 
+[Router default password list](https://www.routerpasswords.com/)
 
-https://www.routerpasswords.com/
-
-https://bestvpn.org/default-router-passwords/
-
+[Router default password list 2](https://bestvpn.org/default-router-passwords/)
 
 So how to check the model of the router? First, probably the SSID of the router will be the same as the model number. 
 
@@ -27,9 +25,9 @@ Another trickier way is to check the MAC address. The OUI of the MAC is the firs
 
 00:14:78     TP-LINK TECHNOLOGIES CO.,LTD.
 
-The MAC is really rarely changed so you can get an idea of which type of router  you are up against. You can check details of the MAC address and their vendors right here:
+The MAC is really rarely changed so you can get an idea of which type of router  you are up against. You can check the details of the MAC address and their vendors right here:
 
-https://aruljohn.com/mac.pl
+[Mac address resolver](https://aruljohn.com/mac.pl)
 
 <h2>Username Enumeration</h2>
 
@@ -53,7 +51,7 @@ Simple little trick to watch out for. A few sites will auto-fill valid usernames
 
 <h3>Time</h3>
 
-Here is a trickier one. Usernames are hopefully hashed these days. Hashing should take time. So developers can implement some performance improvement ideas like: "what if we only hash the user password when the username is valid. You don't need to check password when username is invalid right?" Yeah, and NO. You can measure the difference in response times. So if the response time is longer than the average, you must have a valid username. Now let's look at how to does it with burp suite.
+Here is a trickier one. Usernames are hopefully hashed these days. Hashing should take time. So developers can implement some performance improvement ideas like: "what if we only hash the user password when the username is valid. You don't need to check password when username is invalid right?" Yeah, and NO. You can measure the difference in response times. So if the response time is longer than the average, you must have a valid username. You can try this with Burp or Owasp Zap.
 
 --burp tutorial--
 
@@ -63,16 +61,17 @@ So, now that we got some usernames and usernames are not changed any frequently,
 
 -- use the force picture--
 
-We have password list but now let's create our own. Let's say that we have one user we target. We gathered information about the target in a nice document (OSINT post coming out soon). We can just go through that document and make a password list from it. We can also visit the target organisation website and make a password list with tools like CEWL.
+We have password list but now let's create our own. Let's say that we have one user we target. We gathered information about the target in a nice document (OSINT post coming out soon). We can just go through that document and make a password list from it. We can also visit the target organisation website and make a password list with tools like CEWL.I will not write down the usage of cewl, hydra, medusa, hashcat and may more password cracking tools, but I will leave a link for most of them. 
 
---cewl code and hydra code--
+[cewl](https://tools.kali.org/password-attacks/cewl)
+[hashcat](https://tools.kali.org/password-attacks/hashcat)
+[hydra](https://tools.kali.org/password-attacks/hydra)
+
 
 <h3>Too many attempts</h3>
 
 Oh that is bad. We got blocked after 3-5 attempts. So Bruteforce will not work? Let's think a little. We have a lot of usernames right? With a nice little password list. When we try for example Bob login 5 times, we get too many attempt time ban. What if we try one password for Bob, then the same password for John. If we are lucky, when we get back to Bob, the bad password counter will reset. This technique is also called as Password Spraying. 
 
---code--
-
 <h1>prologue</h1>
 
-In this part we had a look at many ways to get in behind the login page. This post has already explained it's length and so, the next part will cover the rest of the techniques necessary to bypass a login page.
+In this part we had a look at many ways to get in behind the login page. This post has already explained it's length and so, the next part will cover the rest of the techniques necessary to bypass the login page.
