@@ -53,15 +53,9 @@ Simple little trick to watch out for. A few sites will auto-fill valid usernames
 
 Here is a trickier one. Usernames are hopefully hashed these days. Hashing should take time. So developers can implement some performance improvement ideas like: "what if we only hash the user password when the username is valid. You don't need to check password when username is invalid right?" Yeah, and NO. You can measure the difference in response times. So if the response time is longer than the average, you must have a valid username. You can try this with Burp or Owasp Zap.
 
---burp tutorial--
-
 <h2>Getting Password</h2>
 
-So, now that we got some usernames and usernames are not changed any frequently, let's go for passwords. The easiest way is just to bruteforce the passwords:
-
--- use the force picture--
-
-We have password list but now let's create our own. Let's say that we have one user we target. We gathered information about the target in a nice document (OSINT post coming out soon). We can just go through that document and make a password list from it. We can also visit the target organisation website and make a password list with tools like CEWL.I will not write down the usage of cewl, hydra, medusa, hashcat and may more password cracking tools, but I will leave a link for most of them. 
+So, now that we got some usernames and usernames are not changed any frequently, let's go for passwords. The easiest way is just to bruteforce the passwords. We have password list but now let's create our own. Let's say that we have one user we target. We gathered information about the target in a nice document (OSINT post coming out soon). We can just go through that document and make a password list from it. We can also visit the target organisation website and make a password list with tools like CEWL.I will not write down the usage of cewl, hydra, medusa, hashcat and may more password cracking tools, but I will leave a link for most of them. 
 
 [cewl](https://tools.kali.org/password-attacks/cewl)
 [hashcat](https://tools.kali.org/password-attacks/hashcat)
@@ -75,3 +69,6 @@ Oh that is bad. We got blocked after 3-5 attempts. So Bruteforce will not work? 
 <h1>prologue</h1>
 
 In this part we had a look at many ways to get in behind the login page. This post has already explained it's length and so, the next part will cover the rest of the techniques necessary to bypass the login page.
+
+
+
