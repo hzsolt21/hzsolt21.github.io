@@ -53,8 +53,7 @@ So it basically means the attack may involve one or more of the following techni
 <h3> 3 - Delivery: </h3>
 <b> Attack </b> - This phase involves attacker sending the malicious payload to the victim by e-mail or other means. Delivery methods of attacker's vary usually depending on the organization's weakest link. Humans are the weakest link to an organization usually. So the following are the common delivery methods used by attackers:
 * Phishing Email
-* Email with Malicious Document
-* Email with Malicious PDF files
+* Email with Malicious Attachments (ISO, PDF, WORD File with Macros, HTAs etc.)
 * Drop few infected USB drives in a public place etc.
 
 
@@ -75,5 +74,5 @@ A vigilant user should be able to detect malicious payloads sent by attackers. F
 * Keep the systems and applications upto date with all patches 
 
 
-<h2> Prologue </h2> 
+<h2> Epilogue </h2> 
 In this blog post we discovered what a kill chain is and what are the phases of the kill chain. We explored a bit about first 4 phases of the cyber kill chain. The recon, weaponization, delivery and exploitation phases of the kill chain. We also learnt few defenses for the respective phases. In part 2 of this series let us explore more about the next 3 interesting phases of the kill chain. 
