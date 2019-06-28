@@ -56,6 +56,7 @@ It is a 24-hour exam, with additional 48-hours to make the report and submit. Th
 
 Overall, the exam is not as difficult as you might think it is, unless you want to complicate it so much. There are a few rabbit holes in which you could deeply fall into. My suggestion for the exam is to keep it as simple as possible :).
 
+![Exam Certification](/img/ADLabReview/ADLabCert.png)
 
 <h2>So, what's next?</h2> 
 I really enjoyed taking the course and never regretted even for a second. I was really happy to have a playground in which multiple things could be tested out as well. I will probably take their RED TEAM LAB course which is a challenge lab and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also be having more challenges than the current Active Directory Lab. I've heard really good things about the Red Team Lab as well. 
