@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "My Active Directory Lab Experience"
-date:   2019-06-04 18:05:55 +0100
-image:  433MhzRemote-2.png
+date:   2019-06-27 18:05:55 +0100
+image:  ADLabReview/ADLabReviewHeader.png
 tags:   [Hardware]
 ---
 
@@ -50,13 +50,17 @@ Nikhil Mittal is the instructor of this course and that's a real bonus. His expl
 <h2>and then THE EXAM.. </h2>
 It is a 24-hour exam, with additional 48-hours to make the report and submit. There are few requirements for the report. I finished the exam in around 3-4 hours and made the report the next day. Next, within 24 hours got a mail from them about me clearing the exam. Also got a personal mail from Nikhil Mittal, he was open to any feedback and improvements that could be done to the lab/exam. 
 
+![Exam Certification](/img/ADLabReview/ADLabCert.png)
+
+Few exam conditions that will have to be met for the certification are:
+
 * Report should be professional! 
 * Report should include screenshots of tools used and their output
 * Report should consist proper recommendations to the issues you've identified in the exam.
 
 Overall, the exam is not as difficult as you might think it is, unless you want to complicate it so much. There are a few rabbit holes in which you could deeply fall into. My suggestion for the exam is to keep it as simple as possible :).
 
-![Exam Certification](/img/ADLabReview/ADLabCert.png)
+
 
 <h2>So, what's next?</h2> 
 I really enjoyed taking the course and never regretted even for a second. I was really happy to have a playground in which multiple things could be tested out as well. I will probably take their RED TEAM LAB course which is a challenge lab and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also be having more challenges than the current Active Directory Lab. I've heard really good things about the Red Team Lab as well. 
