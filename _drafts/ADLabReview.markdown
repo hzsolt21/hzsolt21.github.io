@@ -10,7 +10,7 @@ tags:   [Hardware]
 <h1 style="font-family:Verdana">My Active Directory Lab Experience </h1>
 
 <h2>Prologue:</h2>
-Back in February, I wanted to dive in deeper into the active directory aspects of security. I just had a minimalistic idea about it, but I always wanted to learn the attacks on Active Directory from both the Red and Blue team's perspective. I saw the tweet from PentesterAcademy about the new course they were going to launch "ACTIVE DIRECTORY LAB". I just saw the content covered in the course and the price of the course. Immediately, I WAS ALL IN! I might be one of the first few ones who signed up for the course. I purchased the 30 - days lab time. I just wanted to share with you about what Active Directory Lab did to me.  
+Back in February 2019, I wanted to dive in deeper into the active directory aspects of security. I just had a minimalistic idea about it, but I always wanted to learn the attacks on Active Directory from both the Red and Blue team's perspective. I saw the tweet from PentesterAcademy about the new course they were going to launch "ACTIVE DIRECTORY LAB". I just saw the content covered in the course and the price of the course. Immediately, I WAS ALL IN! I might be one of the first few ones who signed up for the course. I purchased the 30 - days lab time. I just wanted to share with you about what Active Directory Lab did to me.  
 
 <h2>About the Course</h2>
 Starting off the course covers mostly everything you need to begin active directory pentesting or red team recon in an active directory environment. Few of the things the course covered are:
@@ -30,9 +30,18 @@ The labs provided were Windows 2016 servers with everything set. You will be pro
 
 <-- ADLAB PIC --> 
 
+<h2>About the Instructor</h2>
+Nikhil Mittal is the instructor of this course and that's a real bonus. His explanations were on point and crystal clear. He managed to make the the course objectives as well as learning objectives of the lab as easily understandable and doable as possible. Special mention to the design of the course where he shows not only the offensive side of the attack but also the defensive side of the attack. This adds HUGE value to the course. Few places he shows the misconfiguration from the GUI of the Domain Controller. These subtle things are really important if you're into consulting etc. where you need to provide actual recommendations to your clients. I'm pretty sure Nikhil kept this in mind for the course. 
 
+
+<h2>and then THE EXAM.. </h2>
+It is a 24-hour exam, with additional 48-hours to make the report and submit. There are few requirements for the report. 
+
+* Report should be professional! 
+* Report should include screenshots of tools used and their output
+* Report should consist proper recommendations to the issues you've identified in the exam.
 
 
 <h2>So, what's next?</h2> 
 
-I will probably take their RED TEAM LAB course which is a challenge and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also 
+I will probably take their RED TEAM LAB course which is a challenge and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also be having more challenges than the current Active Directory Lab. 
