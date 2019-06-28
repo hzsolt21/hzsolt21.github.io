@@ -1,19 +1,19 @@
 ---
 layout: post
-title:  "Active Directory Lab Review"
+title:  "My Active Directory Lab Experience"
 date:   2019-06-04 18:05:55 +0100
 image:  433MhzRemote-2.png
 tags:   [Hardware]
 ---
 
 <link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
-<h1 style="font-family:Verdana">My Active Directory Lab Experience </h1>
+<!-- <h1 style="font-family:Verdana">My Active Directory Lab Experience </h1> -->
 
 <h2>Prologue:</h2>
-Back in February 2019, I wanted to dive in deeper into the active directory aspects of security. I just had a minimalistic idea about it, but I always wanted to learn the attacks on Active Directory from both the Red and Blue team's perspective. I saw the tweet from PentesterAcademy about the new course they were going to launch "ACTIVE DIRECTORY LAB". I just saw the content covered in the course and the price of the course. Immediately, I WAS ALL IN! I might be one of the first few ones who signed up for the course. I purchased the 30 - days lab time. I just wanted to share with you about what Active Directory Lab did to me.  
+Back in February 2019, I wanted to dive in deeper into the active directory aspects of security. I just had a minimalistic idea about it, but I always wanted to learn the attacks on Active Directory from both the Red and Blue team's perspective. I saw the tweet from PentesterAcademy about the new course they were going to launch "ACTIVE DIRECTORY LAB". I just saw the content covered in the course and the price of the course. Immediately, I WAS ALL IN! I might be one of the first few ones who signed up for the course. I purchased the 30 - days lab time. I just wanted to share with you about what I feel about the Active Directory Lab from PentesterAcademy.  
 
 <h2>About the Course</h2>
-Starting off the course covers mostly everything you need to begin active directory pentesting or red team recon in an active directory environment. Few of the things the course covered are:
+Starting off, the course covers mostly everything you need to begin active directory pentesting or red team recon in an active directory environment. Few of the things the course covered are:
 
 * Active Directory Enumeration
 * Local Privilege Escalation
@@ -22,23 +22,25 @@ Starting off the course covers mostly everything you need to begin active direct
 * Forest privilege escalation using cross trust attacks. 
 * Inter-forest trust attacks
 
-Course basically starts from what an active directory actually is and ends with techniques to perform domain privilege escalation and cross-forest trust attacks. Sounds Awesome right? Yes, because the course truly delivers the content written on their website. 
+Course basically starts from what an active directory actually is and ends with techniques to perform domain privilege escalation and cross-forest trust attacks. Sounds Awesome right? Yes, because the course truly delivers the content written on their website. This course is more based on misconfigurations than exploitation. That being said, I feel that is the real fun about this course. That is essentially how it is different from other courses/labs. 
 
 
 <h2>About the Labs</h2>
-The labs provided were Windows 2016 servers with everything set. You will be provided an RDP access to a machine which is part of the Domain you'll be hacking into. The labs are super stable. I've never faced an issue while I was doing the lab. This course follows a similiar approach to the "Assume Breach" methodology. It is assumed that the attacker is already inside the Domain/Network. This lab is highly learning objective based meaning there are 23 learning objectives for you to finish before your lab time ends. 
+The labs provided were Windows 2016 servers with everything set. You will be provided an RDP access to a machine which is part of the Domain you'll be hacking into. The labs are super stable. I've never faced an issue while I was doing the lab. This course follows a similiar approach to the "Assume Breach" methodology. It is assumed that the attacker is already inside the Domain/Network. This lab is highly learning objective based meaning there are 23 learning objectives for you to finish before your lab time ends.
 
-<-- ADLAB PIC --> 
+
+![Lab Overview](/img/ADLabReview/activedirectorylab.png) 
 
 <h5>Few of the tools I've used during the labs are: </h5>
-* [Mimikatz] (https://github.com/gentilkiwi/mimikatz/tree/master/mimikatz)
-* [Powersploit] (https://github.com/PowerShellMafia/PowerSploit)
-* [HeidiSQL - Portable] (https://www.heidisql.com/download.php)
-* [Powercat] (https://github.com/besimorhino/powercat)
-* [Kekeo] (https://github.com/gentilkiwi/kekeo)
-* [PowerUpSQL] (https://github.com/NetSPI/PowerUpSQL)
-* [Invoke-Obfuscation] (https://github.com/danielbohannon/Invoke-Obfuscation)
-* [Nishang] (https://github.com/samratashok/nishang)
+
+* [Mimikatz](https://github.com/gentilkiwi/mimikatz/tree/master/mimikatz)
+* [Powersploit](https://github.com/PowerShellMafia/PowerSploit)
+* [HeidiSQL - Portable](https://www.heidisql.com/download.php)
+* [Powercat](https://github.com/besimorhino/powercat)
+* [Kekeo](https://github.com/gentilkiwi/kekeo)
+* [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
+* [Invoke-Obfuscation](https://github.com/danielbohannon/Invoke-Obfuscation)
+* [Nishang](https://github.com/samratashok/nishang)
 
 
 <h2>About the Instructor</h2>
@@ -56,4 +58,12 @@ Overall, the exam is not as difficult as you might think it is, unless you want 
 
 
 <h2>So, what's next?</h2> 
-I really enjoyed taking the course and never regretted even for a second. I will probably take their RED TEAM LAB course which is a challenge lab and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also be having more challenges than the current Active Directory Lab. I've heard really good things about the Red Team Lab as well. 
+I really enjoyed taking the course and never regretted even for a second. I was really happy to have a playground in which multiple things could be tested out as well. I will probably take their RED TEAM LAB course which is a challenge lab and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also be having more challenges than the current Active Directory Lab. I've heard really good things about the Red Team Lab as well. 
+
+<h2> Few other AD Playgrounds to get your hands dirty </h2>
+
+
+* XEN from HackTheBox
+* EndGame from HackTheBox
+* RastaLabs hosted on HackTheBox
+* OffShore lab hosted on HackTheBox 
