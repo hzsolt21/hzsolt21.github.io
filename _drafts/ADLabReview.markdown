@@ -30,18 +30,30 @@ The labs provided were Windows 2016 servers with everything set. You will be pro
 
 <-- ADLAB PIC --> 
 
+<h5>Few of the tools I've used during the labs are: </h5>
+* [Mimikatz] (https://github.com/gentilkiwi/mimikatz/tree/master/mimikatz)
+* [Powersploit] (https://github.com/PowerShellMafia/PowerSploit)
+* [HeidiSQL - Portable] (https://www.heidisql.com/download.php)
+* [Powercat] (https://github.com/besimorhino/powercat)
+* [Kekeo] (https://github.com/gentilkiwi/kekeo)
+* [PowerUpSQL] (https://github.com/NetSPI/PowerUpSQL)
+* [Invoke-Obfuscation] (https://github.com/danielbohannon/Invoke-Obfuscation)
+* [Nishang] (https://github.com/samratashok/nishang)
+
+
 <h2>About the Instructor</h2>
-Nikhil Mittal is the instructor of this course and that's a real bonus. His explanations were on point and crystal clear. He managed to make the the course objectives as well as learning objectives of the lab as easily understandable and doable as possible. Special mention to the design of the course where he shows not only the offensive side of the attack but also the defensive side of the attack. This adds HUGE value to the course. Few places he shows the misconfiguration from the GUI of the Domain Controller. These subtle things are really important if you're into consulting etc. where you need to provide actual recommendations to your clients. I'm pretty sure Nikhil kept this in mind for the course. 
+Nikhil Mittal is the instructor of this course and that's a real bonus. His explanations were on point and crystal clear. He managed to make the the course objectives as well as learning objectives of the lab as easily as understandable and as doable as possible. Special mention to the design of the course where he shows not only the offensive side of the attack but also the defensive side of the attack. This adds HUGE value to the course. Few places he shows the misconfiguration from the GUI of the Domain Controller. These subtle things are really important if you're into consulting etc. where you need to provide actual recommendations to your clients. Or if you're a sysadmin this portion of the lab is highly useful. I'm pretty sure Nikhil kept this in mind for the course. 
 
 
 <h2>and then THE EXAM.. </h2>
-It is a 24-hour exam, with additional 48-hours to make the report and submit. There are few requirements for the report. 
+It is a 24-hour exam, with additional 48-hours to make the report and submit. There are few requirements for the report. I finished the exam in around 3-4 hours and made the report the next day. Next, within 24 hours got a mail from them about me clearing the exam. Also got a personal mail from Nikhil Mittal, he was open to any feedback and improvements that could be done to the lab/exam. 
 
 * Report should be professional! 
 * Report should include screenshots of tools used and their output
 * Report should consist proper recommendations to the issues you've identified in the exam.
 
+Overall, the exam is not as difficult as you might think it is, unless you want to complicate it so much. There are a few rabbit holes in which you could deeply fall into. My suggestion for the exam is to keep it as simple as possible :).
+
 
 <h2>So, what's next?</h2> 
-
-I will probably take their RED TEAM LAB course which is a challenge and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also be having more challenges than the current Active Directory Lab. 
+I really enjoyed taking the course and never regretted even for a second. I will probably take their RED TEAM LAB course which is a challenge lab and not a learning lab as this one. That lab is more tougher than the Active Directory Lab and will also be having more challenges than the current Active Directory Lab. I've heard really good things about the Red Team Lab as well. 
