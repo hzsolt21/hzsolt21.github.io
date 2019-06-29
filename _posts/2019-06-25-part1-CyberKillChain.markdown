@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cyber Kill Chain - Part 1"
-date:   2018-05-29 18:05:55 +0300
+date:   2019-06-25 18:05:55 +0300
 image:  CKC.png
 tags:   [Blue Team,Kill Chain, Purple Team]
 ---
