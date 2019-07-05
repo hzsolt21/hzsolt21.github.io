@@ -47,7 +47,7 @@ So I started, enumerating all the way. Doing the objectives.  It was kinda fast.
 - Some things from the defense section turned on in some of the machines. Maybe in Red team lab this is already a thing.
 
 <h2>The Exam</h2>
-So here we are, exam day. I got my VPN access to the exam. Instantly started enumerating. Noted down everything. And after that… Nope not going to spoil it. A few things to remember. They don't want to mess with you. No magic needed. You can do the exam lab using only the information you got from the materials. When you get stuck, you should check something you don't really think that is too useful. After all, it was nice tricky but useful. Really useful. And after all, when you are stuck, remember to Try Smarter. 
+So here we are, exam day. I got my VPN access to the exam. Instantly started enumerating. Noted down everything. And after that… Nope not going to spoil it. A few things to remember. They don't want to mess with you. No magic needed. You can do the exam lab using only the information you got from the materials. When you get stuck, you should check something you don't really think that is too useful. After all, it was nice and tricky. Really useful. And after all, when you are stuck, remember to Try Smarter. 
 
 <h2>Who is it for?</h2>
 
