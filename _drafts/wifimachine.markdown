@@ -95,7 +95,5 @@ At first the idle results were epic. From current 63C° an instant drop to 42C°
 
 ![Liquid Temps](/img/wifiMachine/liquid.PNG)
 
-<h2>Conclusion</h2>
-Liquid cooling the Orange Pi worked. At least for the few hours I tested it. If you seal it up correctly put it in your backpack, you can have a really well hidden machine on your hand. With 1 wifi adapter connected to your phone you can ssh in and use the other adapter to try to hack the other machines. Noone will suspect someone typing on the phone. On the other hand, I don't know the long term effect of this oil. It may be damaged the Pi in the long run. Maybe not. It is really hard to clean if you want to take it out. So should you do it? Not really, it can be a mess.. but after all, it was fun.
 
 
