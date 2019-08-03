@@ -89,7 +89,7 @@ void loop(){
 
 After a few hours the led still blinks. It is working so far. I could start the real test.
 
--- gif of pouring the oil
+![Liquid](/img/wifiMachine/test.gif)
 
 At first the idle results were epic. From current 63C° an instant drop to 42C°, and the best is, it did NOT EXPLODE. I had to cut some holes in the lid of the box for the power cable and the wifi extension cable. Those are sealed up with superglue and hot glue. Just to be sure. I closed the lid and sealed as well. Grab the backpack and can start the measurement. In idle nothing happens. Everything is at 42C°. Let's crack some password and see the result.
 
