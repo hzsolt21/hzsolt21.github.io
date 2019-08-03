@@ -14,11 +14,11 @@ This project can be dangerous. I am not responsible for any damage or injury. Th
 <h2>CAUTION</h2>
 
 <h2>Prologue:</h2>
-Everyone uses wifi. When you want to get inside a network, wifi is really good because you can be outside of the target. Just sit down on a branch and get inside the network. Or grab some packets for later wifi password cracking. Usually you need a laptop for that. Using a wifi adapter to set it in monitor mode and grab every packet. This can be suspicious. They look back at the photage of the outside security cameras and they can spot you. Or a worker see you wit a weird gadgets near the office. Now I want to find a way to do this and be invisible. At least harder to find. For this, I will use my phone. Today everyone uses their phone. Someone typing on it will not be a big deal. People type on their phone even when they are driving. Phone wifis usually can't go into monitor mode. You need special hardware for it.  Once again, it is weird and unusual to use a phone with a wifi adapter. So I was thinking on creating a portable single board computer and hide it. Let's look at what happened.
+Everyone uses wifi. When you want to get inside a network, wifi is really good way, because you can be outside of the target's organization physically but still access the organization's infrastructure. Just sit down on a branch and get inside the network. Or grab some packets for later when you can start your wifi password cracking. Usually you need a laptop for that. Using a wifi adapter to set it in monitor mode and grab every packet. This can be suspicious. They might look back at the footage of the security cameras outside and they can spot you. Or an employee or a worker might see you with a weird gadgets near the office. Now I want to find a way to do this and be invisible. At least harder to find. For this, I will use my phone. Today everyone uses their phone. Someone typing on it will not be a big deal. People type on their phone even when they are driving. Phone wifis usually can't go into monitor mode. You need special hardware for it.  Once again, it is weird and unusual to use a phone with a wifi adapter. So I started thinking on creating a portable single board computer and hide it. Let's look at what happened.
 
 <h2>Let's Start:</h2>
 
-Getting a Raspberry Pi or an Orange pi, setting up Kali and put a portable charger as PSU is not a big deal. Hiding it well will cause new problems. So here is my basic idea:
+Getting a Raspberry Pi or an Orange Pi, setting up Kali and put a portable charger as a PSU is not a big deal. Hiding it well might cause new problems. So here is my basic idea:
 
 -Get a single board computer
 
@@ -28,7 +28,7 @@ Getting a Raspberry Pi or an Orange pi, setting up Kali and put a portable charg
 
 -SSH in with a Phone
 
-Seems simple, let's do it.
+Seems simple, so, let's do it.
 
 <h2>Orange</h2>
 
@@ -37,11 +37,11 @@ already have Kali up and running on it. You can use Raspberry Pi as well. I won'
 
 [KALILINK](http://www.orangepi.org/downloadresources/)
 
-Wifi adapters, just find the one that can be used in monitor mode. Up to you. I will use the main wifi on Orange Pi to connect to my phone. This way I can ssh in and do everything from my phone. I will use the wifi adapter for hacking.
+Wifi adapters, just find the one that can be used in monitoring/promiscous mode. Totally up to you. I will use the main wifi on Orange Pi to connect to my phone. This way I can ssh in and do everything from my phone. I will use the wifi adapter for hacking.
 
 <h2>Thermal</h2>
 
-Here we go. the biggest problem. These computers can be hot. If you place it in your backpack then it is worst. I did a few measurements to check if I can put it in my backpack with a powerbank. First I created a little script that will log the thermals every 10 second. There is 2 file with the current values. These will be saved to 2 separate files: temp1 and temp2.
+Here we go. The biggest problem. These computers can heat up really quick. If you place it in your backpack then it can go worse. I did a few measurements to check if I can put it in my backpack with a powerbank. First I created a little script that will log the thermal levels every 10 seconds. There are 2 files with the current values. These will be saved to 2 separate files: temp1 and temp2.
 
 ```
 #!/bin/bash
@@ -52,22 +52,22 @@ while true; do
 done
 ```
 
-The tests consist of an idle and a password cracking test. I created a hash from a password which is not in rockyou.txt, and run john to crack it. Not the best stress test, but this machine will not do more performance hungry job then this. Creating the hash and running john with logger:
+The tests consist of an idle and a password cracking test. I created a hash from a password which is not in rockyou.txt, and run john to crack it. Not the best stress test, but this machine will not do more performance hungry job than this. Creating the hash and running john with logger:
 
 ```
 echo -n ASDGqw324qarfhaqzhaewrgf | sha1sum > hash
 john hash --wordlist rockyou.txt & logger.sh &
 ```
 
-Let's run logging in Idle on air first. No cooling just left it in the room. Nothing really interesting happened. The temperature stopped at 53C°. Not too bad. Let's make it interesting. Running john will bring the temperature up.. but not too much. 
+Let's run logging in Idle on air first. No cooling just left it open in the room. Nothing really interesting happened. The temperature stopped at 53C°. Not too bad. Let's make it interesting. Running john will bring the temperature up.. but not too much. 
 
 ![Air Temps](/img/wifiMachine/air.PNG)
 
-This is good. But what if you put this in a backpack. I grabbed my backpack, put the orange pi and let's run it. Idle was not too interesting. Stopped at 65C°. Let's run John and see the result.
+This is good maybe fine. But what if you put this in a backpack it burns up. I grabbed my backpack, put the orange pi and let's run it. Idle was not too interesting. Stopped at 65C°. Let's run John and see the results.
 
 ![Backpack Temps](/img/wifiMachine/backpack.PNG)
 
-Here is the problem. I had to stop the experiment. 80C° started to get hot. I was afraid that something will catch fire. The backpack is a non-fireproof backpack. Something must be done with this. There are a number of ways to deal with the heat problem. I could cut holes, put in fans. I want something more portable, more crazy. I saw those PCs where they put the hole machine in mineral oil. It works really well because the oil is non conductive, non corrosive. The  whole computer becomes a mini submarine. My plane is a little bit different. I got a little food container which can take heat up to 110C°. Mineral oil is not something that is instantly available. So I grabbed some synthetic motor oil. It should be non conductive and non corrosive as well. I don't know what it can do in the long run, but I was sure that it will work. Let's make some test first. I did not want to put the Orange pi directly into the liquid. I made a simple circuit with an arduino nano All it does is to turn a led light on and off. I soldered them with a resistance and the test could begin. 
+Here is the problem. I had to stop the experiment. 80C° started to get hot. I was afraid that something will catch fire. The backpack is a non-fireproof backpack. Something must be done with this. There are a number of ways to deal with the heat problem. I could cut holes, put in fans. I want something more portable, more crazy. I saw those PCs where they put the whole machine in mineral oil. It works really well because the oil is non conductive, non corrosive. The  whole computer becomes a mini submarine. My plan is a little bit different. I got a little food container which can take heat up to 110C°. Mineral oil is not something that is instantly available. So I grabbed some synthetic motor oil. It should be non conductive and non corrosive as well. I don't know what it can do in the long run, but I was sure that it will work. Let's make some tests first. I did not want to put the Orange pi directly into the liquid. I made a simple circuit with an arduino nano. All it does is to turn a led light on and off. I soldered them with a resistance and the test could begin. 
 
 ```
 int led_pin=12;
