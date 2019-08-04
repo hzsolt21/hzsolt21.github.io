@@ -1,13 +1,14 @@
 ---
 layout: post
-title:  "Hidden machine"
-date:   2019-06-04 18:05:55 +0100
-image:  433MhzRemote-2.png
+title:  "The hidden machine"
+date:   2019-08-04 18:05:55 +0100
+image:  wifiMachine/title.PNG
 tags:   [Hardware]
 ---
 
 <link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
 <h1 style="font-family:Verdana">Hidden wifi hacking machine experience </h1>
+
 
 <h2>CAUTION:</h2>
 This project can be dangerous. I am not responsible for any damage or injury. This is a prototype project. Doing this is not recommended. Do it on your own risk. 
