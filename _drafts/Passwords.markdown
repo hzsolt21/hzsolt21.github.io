@@ -95,4 +95,18 @@ Final result: X*SqDJAq>9HRrexc pef rinkime gog  or rexc pef rinkime gogX*SqDJAq>
 What if we make it a little bit easier and generate a password to log in to the other password manager which will create the password for the desired site? That would basically reduce the complexity level. We would basically use one password manager at the end. 
 
  
+<h1>Usernames</h1>
+We are so obsessed with passwords. We are creating apps to manage them, creating devices for double factor authentication. What about usernames? Most people will find one or two username and that is it. It is much easier to find someone when the person uses the same username on every page. What can we do?
+
+<h2>Generate</h2>
+In case you use a good password manager, then you can simply generate a random username for different sites. We don't need to remember them. Let's See for example Master Password. We can use the site's name to generate username. Let's enter with the credentials above. Using googleu as sitename and Basic for the type, it will generate SNq48HFm. This will be my password. googlep and type phrase will give my password: ne holca caq hufejva
+In case it is too complicated, we can always use an online generator like 
+
+site https://jimpix.co.uk/words/username-generator.asp
+<h2>Decoy</h2>
+The best way, it is  to use someone else's username. Just get a lot of common username and  use a random generator to select one for different pages. Or better. Most username is a first name first letter + last name. Like John Anderson will be janderson. Bumm easy. So let's grab every common first name and every common lastname and pair the first letter of the first names with the last names and we are done.( btw for the first letters, use the English alphabet…)
+
+https://en.wikipedia.org/wiki/Lists_of_most_common_surnames
+https://en.wikipedia.org/wiki/List_of_most_popular_given_names
+
 
