@@ -55,11 +55,11 @@ This application is mostly in category 1 with "No Storage". It will not store pa
 
 You can download the app for IOS Android.. now I will just use the web. They ask for identity. You can enter anything, but remember them. This is how this app generates the pass for you. I entered: strik1r strik1r and used v3.
 
---picture masterpass
+![Masterpass login](/img/password/masterstrik1r.PNG)
 
 On the next page you can enter which site/app you want a password for like: google, facebook, wifi. Then the type of the password and the number of iterations. If you entered the same as me you should see the same result.
 
---masterpass pass
+![Masterpass site](/img/password/pass.PNG)
 
 If everything's the same: username pass version sitename iteration passtype then the generated password will be the same.
 
@@ -89,7 +89,7 @@ Generate a password with masterpassword: rexc pef rinkime gog
 
 Password generated with Keepass: X*SqDJAq>9HR
 
-Final result: X*SqDJAq>9HRrexc pef rinkime gog  or rexc pef rinkime gogX*SqDJAq>9HR
+Final result: X*SqDJAq>9HRrexc pef rinkime gog  OR rexc pef rinkime gogX*SqDJAq>9HR
 
 What if we make it a little bit easier and generate a password to log in to the other password manager which will create the password for the desired site? That would basically reduce the complexity level. We would basically use one password manager at the end. 
  
