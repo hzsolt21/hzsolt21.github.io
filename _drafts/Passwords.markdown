@@ -3,7 +3,7 @@ layout: post
 title:  "Pass Words?"
 date:   2019-06-04 18:05:55 +0100
 image:  commic.png
-tags:   [Hardware]
+tags:   [Password]
 ---
 
 <link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
