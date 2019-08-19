@@ -78,7 +78,7 @@ That part of WE MAY is not sounding great. But is this a problem? Not really. Ch
 
 link:https://www.lastpass.com
 
-<h2>Level Paranoid</h2>
+<h2>Password Level: Totally Paranoid</h2>
 Ok so password managers are really good and makes our life easier. But we want to get more secure. We don't want to instantly lose access in case out password manager is compromised. 
 
 <h3>Extend</h3>
