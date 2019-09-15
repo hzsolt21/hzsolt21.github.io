@@ -3,6 +3,7 @@ layout: post
 title:  "The hidden machine"
 date:   2019-08-04 18:05:55 +0100
 image:  wifiMachine/title.PNG
+author-name: strik1r
 tags:   [Hardware]
 ---
 

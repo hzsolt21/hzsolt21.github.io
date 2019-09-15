@@ -3,6 +3,7 @@ layout: post
 title:  "Pass Words?"
 date:   2019-08-19 15:15:15 +0100
 image:  password/passwordmain.jpg
+author-name: strik1r
 tags:   [Password]
 ---
 
