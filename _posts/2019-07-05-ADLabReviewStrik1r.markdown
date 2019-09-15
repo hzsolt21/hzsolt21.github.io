@@ -3,6 +3,7 @@ layout: post
 title:  "ADlab Strik1r Review"
 date:   2019-07-05 18:05:55 +0300
 image:  ADLabReview/PA.png
+author-name: strik1r
 tags:   [AD]
 ---
 

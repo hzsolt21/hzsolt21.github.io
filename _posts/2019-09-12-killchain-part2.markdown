@@ -3,6 +3,7 @@ layout: post
 title:  "Cyber Kill Chain - Part 2"
 date:   2019-09-10 18:05:55 +0300
 image:  Killchain2/a.png
+author-name: jinxbox
 tags:   [Blue Team,Kill Chain, Purple Team]
 ---
 

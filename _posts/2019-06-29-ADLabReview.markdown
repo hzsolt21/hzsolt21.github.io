@@ -3,6 +3,7 @@ layout: post
 title:  "My Active Directory Lab Experience"
 date:   2019-06-27 18:05:55 +0100
 image:  ADLabReview/ADLabReviewHeader.png
+author-name: jinxbox
 tags:   [Hardware]
 ---
 
