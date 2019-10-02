@@ -15,12 +15,12 @@ In this blog post let us explore few data protection techniques. Let us begin by
 <h3>Technique 1: Plain Text</h3>
 They can send messages in plain text. This is not a great idea. Everyone, like our hacker, can see what they are sending to each other. He can send messages in the name of Bob or Alice. We can see that this is not good enough data protection between Bob and Alice.
 
-Good:
-[+] Fast, no extra computing power needed at all.
+Good: <br>
+[+] Fast, no extra computing power needed at all.<br>
 
-Bad:
-[-] Insecure: Anyone can read and understand the data exchanged between Bob and Alice.
-[-] Interceptable.
+Bad: <br>
+[-] Insecure: Anyone can read and understand the data exchanged between Bob and Alice. <br>
+[-] Interceptable.<br>
 
 <h3>Technique 2: Hashing</h3>
 Hashing is when you take a message, apply an algorithm and get a fixed length of random characters. It does not matter what you hash. It can be a letter, a file, anything. We will just call them messages. Any message hashed should give back the same length of characters. That is because the hash length would change, you could make statistical guesses to make it easier to get back the original information. Every hash should have a flat histogram. That means that the number of characters in a hash should be around equal. One of these well known algorithms is MD5. MD5 is a 128 bit hashing algorithm. But how can Bob and Alice use this to send messages to each other? Not really well. To do it, both of them needs a list of predefined messages. 
@@ -33,13 +33,13 @@ There is a problem with hashes. Every massage will have a different hash. Since 
 
 So why do people use hashing if there is a collision? The Answer is simple. A modern hashing algorithm, like SHA3-512 has a hash so long, with so many possibilities, that a collision is really unlikely to happen. 
 
-Good:
-[+] Attacker can't see the messages
-[+] Attacker can't send messages in the name of someone else, if the messages list is unknown
+Good: <br>
+[+] Attacker can't see the messages <br>
+[+] Attacker can't send messages in the name of someone else, if the messages list is unknown <br>
 
-Bad:
-[-] Hashing is not for secure communication.
-[-] Slow and only predefined messages can be sent.
+Bad:<br>
+[-] Hashing is not for secure communication. <br>
+[-] Slow and only predefined messages can be sent. <br>
  
 <h3>Technique 3: Cryptography</h3>
 Now we are getting somewhere. Cryptography is the science of sending hidden messages.This is meant to send messages to one another. In easy way, crypto is:
@@ -62,13 +62,13 @@ PICTURE
 But wait. If Asymmetric Encryption is so secure, then why don't we just send messages with it. Why do we need symmetric encrytion at all? Simple. Symmetric encryption needs much less resources to do the encryption. It is really faster and uses less power.
 
 
-Good:
-[+] Crypto and the methods built on them is the go to messaging solution.
-[+] No collusion
-[+] Mathematically impossible to crack most of the algorithms
+Good: <br>
+[+] Crypto and the methods built on them is the go to messaging solution. <br>
+[+] No collusion <br>
+[+] Mathematically impossible to crack most of the algorithms <br>
 
-Bad:
-[-] Attacker can still see that you have encrypted communication which can make you suspicious. 
+Bad: <br>
+[-] Attacker can still see that you have encrypted communication which can make you suspicious. <br>
 
 <h3>Steganography </h3>
 To sum up steganography: Hidden Cryptography. The messages are hidden in a way that an observer cannot tell that you are sending messages. Let's see a few ways for that.
@@ -94,14 +94,14 @@ Here are two files, one is the original one is with a hidden picture.(try party 
 ![original](/img/stego/original.jpg)
 ![stego](/img/stego/stego.jpg)
 
-Good:
-[+] Attacker can't see the messages
-[+] Attacker can't send messages in the name of someone else, if the messages list is unknown
-[+] Attacker will not know that a message has been sent. 
+Good: <br>
+[+] Attacker can't see the messages <br>
+[+] Attacker can't send messages in the name of someone else, if the messages list is unknown<br>
+[+] Attacker will not know that a message has been sent. <br>
 
-Bad:
-[-] Slow
-[-] Need a pre-shared password.
+Bad:<br>
+[-] Slow <br>
+[-] Need a pre-shared password.<br>
 
 <h4>Finding steganography</h4>
 To be honest, if someone uses a good stego method, it is really hard to find. Most of the times, the way stego users get caught, is if they have to original pictures with them. You can hash the two pictures and if the hashes are different, maybe you are dealing with a stego image. If you have access to the suspected stego users computer, and you find stego programs there, you can be sure they have some secrets.
