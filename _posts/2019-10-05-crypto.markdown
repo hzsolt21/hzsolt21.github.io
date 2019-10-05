@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hash Crypto Stego"
-date:   2019-09-10 18:05:55 +0300
+date:   2019-10-05 10:05:55 +0300
 image:  stego/main.png
 author-name: strik1r
 tags:   [Crypto, Stego]
