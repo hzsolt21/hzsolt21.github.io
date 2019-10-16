@@ -8,7 +8,7 @@ tags:   [VNC, Auth Bypass, CVE]
 ---
 
 <h2>Prologue:</h2>
-In this blog post, I'll be writing few details about a vulnerability I found in ThinVNC. ThinVNC is a remote desktop client which works on web. I found an arbitrary file read vulnerability through which the authentication set can be bypassed. An attacker can gain remote terminal access abusing this vulnerability.
+In this blog post, I'll be writing few details about a vulnerability I found in ThinVNC. ThinVNC is a remote desktop client which works on web. I found an arbitrary file read vulnerability through which the authentication set can be bypassed. An attacker can gain remote terminal access abusing this vulnerability. 
 
 <h3> ThinVNC Application </h3>
 ThinVNC can be downloaded from [sourceforge](https://sourceforge.net/projects/thinvnc/) and the source code for this is available at [github](https://github.com/bewest/thinvnc). According to it's author ThinVNC is a pure HTML5 & AJAX Remote Desktop implementation. ThinVNC works on any HTML5-compliant web browser. Users can access a remote PC from any computer or mobile OS; no additional plugin or installation will be required on the client side. 
@@ -63,14 +63,25 @@ My friend [@WarMarx](https://twitter.com/\_WarMarX\_) on Twitter and I have writ
 
 <h3> ThinVNC in the wild  </h3>
 There are roughly 800 accessible ThinVNC servers exposed over internet. You can use the following queries on Shondan and Zoomeye to identiify the vulnearble servers. 
-![zoomeye](/img/ThinVNC/CVE-1.png)
+
 <br>
+[ZoomEye](https://zoomeye.org): 130 Active Servers Identified
+![zoomeye](/img/ThinVNC/CVE-1.png)
+
+
+<br>
+[Shodan](https://shodan.io): 45 Active Servers Identified
 <br>
 ![shodan](/img/ThinVNC/CVE-6.png)
 
 SourceForge Page suggests that there are 219 downloads / week on an average of this VNC software. 
 
+<h5>Few takeaways:</h5>
+-  Never store Cleartext Credentials <br>
+-  Never use HTTP/Basic Authentication <br>
+-  Never stop hunting after an error page <br>
+
 <h2> Conclusion: </h2>
-Do not use legacy software, even though there are no POC's or CVE's available on those software, they might be vulnerable to some issue. Always keep yourself and your software updated. Cheers :)
+This post was just a description of how this vulnerability was found. You could end up in a similiar scenario during a Pentest Op or a Red Team Op. Do not use legacy software, even though there are no POC's or CVE's available on those software, they might be vulnerable to some issue. Always keep yourself and your software updated. Cheers! :)
 
 
