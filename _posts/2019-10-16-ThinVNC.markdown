@@ -8,7 +8,7 @@ tags:   [VNC, Auth Bypass, CVE]
 ---
 
 <h2>Prologue:</h2>
-In this blog post, I'll be writing few details about a vulnerability I found in ThinVNC. ThinVNC is a remote desktop client which works on web. I found an arbitrary file read vulnerability through which the authentication set can be bypassed. An attacker can gain remote terminal access abusing this vulnerability. 
+In this blog post, I'll be writing few details about a vulnerability (CVE-2019-17662) I found in ThinVNC. ThinVNC is a remote desktop client which works on web. I found an arbitrary file read vulnerability through which the authentication set can be bypassed. An attacker can gain remote terminal access abusing this vulnerability. 
 
 <h3> ThinVNC Application </h3>
 ThinVNC can be downloaded from [sourceforge](https://sourceforge.net/projects/thinvnc/) and the source code for this is available at [github](https://github.com/bewest/thinvnc). According to it's author ThinVNC is a pure HTML5 & AJAX Remote Desktop implementation. ThinVNC works on any HTML5-compliant web browser. Users can access a remote PC from any computer or mobile OS; no additional plugin or installation will be required on the client side. 
@@ -59,7 +59,7 @@ This directory traversal attack vector allows us to read any arbitrary file on t
 
 
 <h3> POC: </h3>
-My friend [@WarMarx](https://twitter.com/\_WarMarX\_) on Twitter and I have written a tiny POC for this issue which can be found here: [Github POC Link](https://github.com/shashankmangal2/Exploits/tree/master/ThinVNC-RemoteAccess)
+My friend [@WarMarx](https://twitter.com/\_WarMarX\_) on Twitter and I have written a tiny POC for this issue which can be found here: [Github POC Link](https://github.com/shashankmangal2/Exploits/tree/master/CVE-2019-17662)
 
 <h3> ThinVNC in the wild  </h3>
 There are roughly 800 accessible ThinVNC servers exposed over internet. You can use the following queries on Shondan and Zoomeye to identiify the vulnearble servers. 
