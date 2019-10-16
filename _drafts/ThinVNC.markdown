@@ -59,7 +59,7 @@ This directory traversal attack vector allows us to read any arbitrary file on t
 
 
 <h3> POC: </h3>
-My friend [@\_WarMarx\_] (https://twitter.com/\_WarMarX\_) on Twitter and I have written a tiny POC for this issue. 
+My friend [@WarMarx](https://twitter.com/\_WarMarX\_) on Twitter and I have written a tiny POC for this issue which can be found here: [Github POC Link](https://github.com/shashankmangal2/Exploits/tree/master/ThinVNC-RemoteAccess)
 
 <h3> ThinVNC in the wild  </h3>
 There are roughly 800 accessible ThinVNC servers exposed over internet. You can use the following queries on Shondan and Zoomeye to identiify the vulnearble servers. 
@@ -68,7 +68,7 @@ There are roughly 800 accessible ThinVNC servers exposed over internet. You can 
 
 SourceForge Page suggests that there are 219 downloads / week on an average of this VNC software. 
 
-<h4> Conclusion </h4>
+<h2> Conclusion: </h2>
 Do not use legacy software, even though there are no POC's or CVE's available on those software, they might be vulnerable to some issue. Always keep yourself and your software updated. Cheers :)
 
 
