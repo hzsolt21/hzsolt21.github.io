@@ -57,4 +57,10 @@ This directory traversal attack vector allows us to read any arbitrary file on t
 <h3> POC: </h3>
 
 <h3> ThinVNC in the wild  </h3>
-There are roughly 800 accessible ThinVNC servers exposed over internet. 
+There are roughly 800 accessible ThinVNC servers exposed over internet. You can use the following queries on Shondan and Zoomeye to identiify the vulnearble servers. 
+[zoomeye ss]
+[shodan ss]
+
+SourceForge Page suggests that there are 208 downloads/week on an average. 
+
+
