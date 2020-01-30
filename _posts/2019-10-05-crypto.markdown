@@ -43,10 +43,10 @@ Bad:<br>
  
 <h3>Technique 3: Cryptography</h3>
 Now we are getting somewhere. Cryptography is the science of sending hidden messages.This is meant to send messages to one another. In easy way, crypto is:
-have a message <!-- add bullet points here>
-get a key
-make the message unreadable with the key
-target will read the message with a key
+have a message<br>
+get a key<br>
+make the message unreadable with the key<br>
+target will read the message with a key<br>
 
 Crypto messages does not need to have a fixed length, so no collision problem. It was intentionally written "a key" instead of "the key". Crypto can use one or two keys.
 
