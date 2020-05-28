@@ -9,9 +9,10 @@ tags:   [Eternal, Blue, Without Metasploit, Exploit modification]
 
 <h2>Prologue:</h2>
 I wanted to create a Without Metasploit series. Here we would look and modify famous exploits without using the Metasploit framework. What would be the best way to start then with Eternal Blue?
-<h3> ThinVNC Application </h3>
-ThinVNC can be downloaded from [sourceforge](https://sourceforge.net/projects/thinvnc/) and the source code for this is available at [github](https://github.com/bewest/thinvnc). According to it's author ThinVNC is a pure HTML5 & AJAX Remote Desktop implementation. ThinVNC works on any HTML5-compliant web browser. Users can access a remote PC from any computer or mobile OS; no additional plugin or installation will be required on the client side. 
-
+<h3> Environment </h3>
+The easiest way to find an environment to test on, is to get Hack The Box VIP and attack Blue.
+Setting up your lockal vm, try Metasploitable 3 [Metasploitable3](https://github.com/rapid7/metasploitable3) 
+I will go with the Metasploitable now.
 <h3> Vulnerability Description </h3>
 ThinVNC uses Basic Authentication to authenticate a user to access the web VNC interface. Credentials to be used are set on the server side while deploying the VNC server. There is no fixed port on which VNC server runs, you can run the VNC server on any port pre-configured.
 
