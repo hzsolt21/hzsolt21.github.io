@@ -48,17 +48,24 @@ this list if you did not succed for the first try.
 
 
 <h4>Sample Request:</h4>
-try, fail then add username then show that low priv user can do it
-```
-code
-```
+First, let's run it agains the target.
+[FAIL](/img/EternalBlue/fail.png)
+This did not go very well. No named Pipe was found. We can add more possible named pipe to our list, and give it another try. It failed again. From here we have another option. 
+If we know valid credentials, then we could try to use it. Adding vagrant/vargrant to the Username Password section.
+```USERNAME = 'vagrant'
+PASSWORD = 'vagrant'```
+Running the code it will execute and create C:\pwned.txt on the machine.
+[PWNED](/img/EternalBlue/pwned.PNG)
+We can log in and check the file. It should be there. That is ok but vagrant is an admin user. If we have credentials then we probably do not need this exploit at all.
+
+<h3> Eternal Blue as Privilege escalation </h3>
+Let's create a test user with test as password. User test should not be admin this time. By loging in as test, you can see that you are unable to create c:\pwned.txt.
+[testUser](/img/EternalBlue/test.PNG)
+Adding these credentials to our exploit and running it, will once again create the file pwned.txt This means that we have non-admin credentials but we could still execute commands as admin.
+
+<h4> Modifying the exploit</h4>
+
 <br>
-![Burp](/img/EternalBlue/searchspolit.png)
-<br>
-
-This directory traversal attack vector allows us to read any arbitrary file on the system. We can use the same vector to steal the credentials for the VNC client. Once we steal them, we can use the credentials to compromise the VNC server. Post compromise, we get terminal access to the VNC server.
 
 
-
-<h3> POC: </h3>
 link[@WarMarx](https://twitter.com/\_WarMarX\_) 
