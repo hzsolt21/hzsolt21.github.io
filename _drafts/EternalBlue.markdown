@@ -34,8 +34,8 @@ Now let's start to look at what do we have in this file.
 first we can see the lines:
 ```from impacket import smb, smbconnection
 from mysmb import MYSMB```
-We already have impacket but what about mysmb? With a little googleing wi can find that too.
-```wget https://github.com/worawit/MS17-010/blob/master/mysmb.py```
+We already have impacket but what about mysmb? With a little googleing we can find that too.
+```wget https://raw.githubusercontent.com/worawit/MS17-010/master/mysmb.py```
 
 Now we can go deeper.
 
@@ -48,7 +48,7 @@ this list if you did not succed for the first try.
 
 
 <h4>Sample Request:</h4>
-
+try, fail then add username then show that low priv user can do it
 ```
 code
 ```
