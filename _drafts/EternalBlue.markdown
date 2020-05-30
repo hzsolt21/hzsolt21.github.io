@@ -173,7 +173,7 @@ python psexec.py attacker:PassW123@10.0.2.15
 ![psexec](/img/EternalBlue/psexec.PNG)
 <br>
 
-<h3> Without Pipe or credentials </h3>
+<h3> Without Pipe</h3>
 We looked at various ways to exploit eternal blue with pipename. But what if whe have no pipe name. We need a way to still exploit it. We have one but it is more likely to crash the target.
 To make this work, first we need to clone the full repo of MS17-010 from worawit.
 ```
