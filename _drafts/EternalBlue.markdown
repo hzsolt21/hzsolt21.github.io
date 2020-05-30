@@ -62,8 +62,13 @@ We can log in and check the file. It should be there. That is ok but vagrant is 
 Let's create a test user with test as password. User test should not be admin this time. By loging in as test, you can see that you are unable to create c:\pwned.txt.
 [testUser](/img/EternalBlue/test.PNG)
 Adding these credentials to our exploit and running it, will once again create the file pwned.txt This means that we have non-admin credentials but we could still execute commands as admin.
+We can see on the included picture that user test cannot delete the file.
+[testUser](/img/EternalBlue/delete.PNG)
+<h3> Modifying the exploit</h3>
+In case you can find a working pipe name or use credentials, creating a file on the target machine may not be that usefull for us. Let's modify the exploit code to get a reverse shell.
+<h3> Upload shell</h3>
 
-<h4> Modifying the exploit</h4>
+
 
 <br>
 
