@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Eternal Pain of OSCP"
+title:  "EternalBlue without Metasploit"
 date:   2020-05-31 18:05:55 +0300
 image:  EternalBlue/title.png
 author-name: strik1r
@@ -8,7 +8,7 @@ tags:   [EternalBlue, Without Metasploit, Exploit modification]
 ---
 
 <h2>Prologue:</h2>
-I've been doing my OSCP and figured out that people do find problems using few exploits without Metasploit. Well, here in this blog post we are going to explore using exploits without Metasploit at all. I figured the best way to do that would be to start with the ever famous ETERNAL BLUE EXPLOIT.
+In this blog post we are going to explore using exploits without Metasploit at all. I figured the best way to do that would be to start with the ever famous ETERNAL BLUE EXPLOIT.
 
 <h3> Environment Setup </h3>
 The easiest way to find an environment to test on, is to get [Hack The Box](https://hackthebox.eu) VIP and attack the Blue machine which is already vulnerable to this exploit.
