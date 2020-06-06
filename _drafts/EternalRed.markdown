@@ -31,9 +31,12 @@ docker run --rm -it \
        vulnerables/cve-2017-7494
 ```
 
+In case you would like to conect to the docker machine you need to do two things. First determinate the container ID then connect to the container.
 
-
-
+```
+docker ps
+docker exec -ti id bash
+```
 
 
 
