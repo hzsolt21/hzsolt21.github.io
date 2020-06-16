@@ -11,7 +11,7 @@ tags:   [EternalRed, Without Metasploit, Exploit modification, Sambacry]
 In this blog post we are going to explore using exploits without Metasploit at all. After EternalBlue, our next exploit will be EternalRed aka Sambacry.
 
 <h3> Environment Setup </h3>
-The easiest way to find an environment to test on, is to set up the docker machine with the instruction from the exploit page: https://github.com/opsxcq/exploit-CVE-2017-7494
+The easiest way to find an environment to test on, is to set up the docker machine with the instruction from the exploit page:[exploit](https://github.com/opsxcq/exploit-CVE-2017-7494)
 But first we need to install docker. I will just show you all the commands I used to make it work on my KALI environment. The last line with hello world is just to test that everything worked:
 ```
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -133,3 +133,8 @@ With that tiny little modification, the exploit is ready to run. By using the gi
 
 ```
 ![firstRun](/img/EternalRed/firstRun.png)
+
+Here we can see that the exploit executed, the uname -a run, and we got back a command prompt. The exploit trigger that we wrote on the screen is: ncacn_np:localhost[\pipe\/data/libbindshell-samba.so] . Luckily we do not need modification here because the exploit creator made sure that this variable is easely controllable by the user.
+We can set the -r parameter for the full path of the payload and it should work... for this version. After investigating the metasploit version [is_known_pipename](https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/linux/samba/is_known_pipename.rb), I found that it wil try not just the full path, but full path with added "\\\\PIPE\\". 
+It looks like a few version needs this string before the path to work. In case the exploit did not worked, it is possible that "\\\\PIPE\\/sharename/file.so" could work as parameter -r.
+
