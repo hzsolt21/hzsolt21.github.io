@@ -330,3 +330,7 @@ After comply and execute, the test folder is created as root.
 
 Works with the original bindshell too.
 ![root](/img/EternalRed/rootbind.png)
+
+
+<h2>Summary:</h2>
+We looked at how Sambacry exploit works, analised the exploit payload, and created our own based on the initial bindshell that was included.
