@@ -149,9 +149,8 @@ Compiled with gcc, run the exploit and fail. Like really big fail. Looking at th
 <br>
 ![fail](/img/EternalRed/fail.png)
 <br>
-Investigating the error and the already created bind shell a few things must be done. First the smb will try to search for a function named samba_init_module. This is where the execution will start. In case this function do not appear in the code, then
-the same error will happen as in the picture. In the bindshell we can also see a detachFromParent() function. These should be implemented as well to make sure that the exploit will not hang and the connection can be received.
-We only have one thing to add. That is the IP and the Port that we want to connect back. Here I checked my IP with ifconfig and added that as listening host and 4445 as listening port
+Investigating the error and the already created bind shell a few things must be done in order to make this work. First the SMB will try to search for a function named samba_init_module. This is where the execution will start. In case this function does not appear in the code, then the same error will occur as shown in the picture. In the bindshell payload we can also see a detachFromParent() function. These should be implemented as well to make sure that the exploit will not hang and the connection can be received without fail. <br>
+We only have one thing to add. That is the IP and the Port that we want to connect back to. Here I checked my IP with ifconfig and added that as listening host and 4445 as listening port
 The final reverse shell code:
 <br>
 ```
@@ -236,9 +235,9 @@ gcc -shared -o reverse.so reverse.o
 ![reverseShell](/img/EternalRed/reverse.png)
 <br>
 
-<h3>Other execution</h3>
-What if we want to do something else. For example, run a command. No problem, we need the same starting method name, the detachFromParent methode and some small code to run our command. We will use system() in this case.
-For this test, I will create a new folder in /tmp called test. here is the code sample:
+<h3>Other Payloads</h3>
+What if we want to do something else. For example, run a command. No problem, we need the same starting method name, the detachFromParent method and some small code to run our command. We will use just a system() function execution in this case which executes a command supplied to it as input.
+For this test, I will create a new folder in /tmp called test. here is the code snippet I've used:
 <br>
 ```
 #include <stdio.h>
@@ -311,10 +310,10 @@ gcc -shared -o execute.so execute.o
 ![commandExecution](/img/EternalRed/Commands.png)
 <br>
 
-<h2>Root</h2>
+<h2>Root Root!</h2>
 <br>
 As you may see on the picture above, the directory created is owned by nobody. If you tried all the shells above, you will realise that whoami will give back nobody.
-It would be better if we could get root right? Just a little bit of modification is needed here. From the C payload, after detach but before command/shell execution, we can set our uid guid to 0 and become root. 
+It would be better if we could get root right? Just a little bit of modification  (tweak) is needed here. From the C payload, after detachment but before command/shell execution, we can set our UID and GUID to 0 and simply become root. 
 Simply add setuid(0) and setgid(0) like this:
 
 <br>
@@ -335,7 +334,7 @@ int samba_init_module(void)
 ```
 
 <br>
-After comply and execute, the test folder is created as root.
+After complilation and execution, the test folder is created as root.
 <br>
 
 ![root](/img/EternalRed/toroot.png)
@@ -347,4 +346,4 @@ Works with the original bindshell too.
 <br>
 
 <h2>Summary:</h2>
-We looked at how Sambacry exploit works, analysed the exploit payload, and created our own based on the initial bindshell that was included.
+This is a big win to get reverse shell on the vulnerable machine as root uid=0. We looked at how Sambacry exploit works, analysed the exploit's payload varities, and created our own based on the initial bindshell that was included. All the required code samples will be available on our [Github]()
