@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "EternalRed aka Sambacry without Metasploit"
-date:   2020-05-31 18:05:55 +0300
+date:   2020-06-20 18:05:55 +0300
 image:  EternalRed/title.png
 author-name: strik1r
 tags:   [EternalRed, Without Metasploit, Exploit modification, Sambacry]
