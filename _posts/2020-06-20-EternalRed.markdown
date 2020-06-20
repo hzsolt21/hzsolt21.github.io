@@ -46,7 +46,7 @@ docker ps
 docker exec -ti id bash
 ```
 <br>
-![connectToContainer](/img/EternalRed/connectToContainer.png)
+![connectToContainer](/img/EternalRed/connectToContainer.PNG)
 <br>
 We are going to go through our exploitation process in a phase wise approach. The first one being the detection phase.
 <h2>Detection Phase</h2>
@@ -57,7 +57,7 @@ So we want to detect if the target is vulnerable to Sambacry. We will be using N
 nmap --script smb-vuln-cve-2017-7494 --script-args smb-vuln-cve-2017-7494.check-version -p445 127.0.0.1
 ```
 <br>
-![detection](/img/EternalRed/detect.png)
+![detection](/img/EternalRed/detect.PNG)
 <br>
 Oh! So we are vulnerable. I intentially set the target ip to 127.0.0.1 because the docker command we used to start the box binds the port 445 to our local port 445. So we actually targeted the vulnerable box, not our own attacker machine.
 <br>
@@ -133,7 +133,7 @@ With that tiny little modification, the exploit is ready to run. By using the gi
              -u sambacry -p nosambanocry -P 6699
 ```
 <br>
-![firstRun](/img/EternalRed/firstRun.png)
+![firstRun](/img/EternalRed/firstRun.PNG)
 <br>
 <br>
 Here we can see that the exploit executed, the uname -a ran successfully, and we got back a command prompt. The exploit trigger that we wrote on the screen is: ncacn_np:localhost[\pipe\/data/libbindshell-samba.so] . Luckily we do not need modification here because the exploit author made sure that this variable is easily controllable by the user.
@@ -148,7 +148,7 @@ For this I grabbed the first reverse shell code written in C that I could find.[
 Compiled with gcc, run the exploit and fail. Like really big fail. Looking at the machine logs, it was clear what happened. Not just any payload can be used here. Let's modify this reverse shell to make it work.
 <br>
 <br>
-![fail](/img/EternalRed/fail.png)
+![fail](/img/EternalRed/fail.PNG)
 <br>
 <br>
 Investigating the error and the already created bind shell a few things must be done in order to make this work. First the SMB will try to search for a function named samba_init_module. This is where the execution will start. In case this function does not appear in the code, then the same error will occur as shown in the picture. In the bindshell payload we can also see a detachFromParent() function. These should be implemented as well to make sure that the exploit will not hang and the connection can be received without fail. <br>
@@ -231,7 +231,7 @@ gcc -shared -o reverse.so reverse.o
 			 
 ```
 <br>
-![reverseShell](/img/EternalRed/reverse.png)
+![reverseShell](/img/EternalRed/reverse.PNG)
 <br>
 
 <h3>Other Payloads</h3>
@@ -301,7 +301,7 @@ gcc -shared -o execute.so execute.o
 ```
 <br>
 
-![commandExecution](/img/EternalRed/Commands.png)
+![commandExecution](/img/EternalRed/Commands.PNG)
 <br>
 
 <h2>Root Root!</h2>
@@ -329,12 +329,12 @@ int samba_init_module(void)
 After complilation and execution, the test folder is created as root.
 <br>
 
-![root](/img/EternalRed/toroot.png)
+![root](/img/EternalRed/toroot.PNG)
 <br>
 Works with the original bindshell too.
 <br>
 
-![root](/img/EternalRed/rootbind.png)
+![root](/img/EternalRed/rootBind.PNG)
 <br>
 
 <h2>Summary:</h2>
